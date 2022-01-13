@@ -4,6 +4,7 @@ import dotenv from 'dotenv';
 import morgan from 'morgan';
 
 import connectDB from './config/database.js';
+import PortfolioRouter from './routers/portfolioRouter.js';
 
 // Initialize environmental variables
 dotenv.config();
@@ -26,6 +27,8 @@ app.use(express.json());
 app.get('/', (req, res) => {
   res.send('API is running');
 });
+
+app.use('/api/portfolios', PortfolioRouter);
 
 // Run server
 const PORT = process.env.PORT;
