@@ -5,6 +5,9 @@ import morgan from 'morgan';
 
 import connectDB from './config/database.js';
 import PortfolioRouter from './routers/portfolioRouter.js';
+import CertificateRouter from './routers/certificateRouter.js';
+import SkillRouter from './routers/skillRouter.js';
+import ContactRouter from './routers/contactRouter.js';
 
 // Initialize environmental variables
 dotenv.config();
@@ -29,6 +32,9 @@ app.get('/', (req, res) => {
 });
 
 app.use('/api/portfolios', PortfolioRouter);
+app.use('/api/certificates', CertificateRouter);
+app.use('/api/skills', SkillRouter);
+app.use('/api/contacts', ContactRouter);
 
 // Run server
 const PORT = process.env.PORT;
