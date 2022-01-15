@@ -10,8 +10,9 @@ const skillSchema = mongoose.Schema(
     maturity: {
       type: String,
       trim: true,
-      enum: ['Beginner', 'Intermediate', 'Expert'],
-      default: 'Beginner',
+      lowercase: true,
+      enum: ['beginner', 'intermediate', 'expert'],
+      default: 'beginner',
     },
     score: {
       type: Number,
@@ -19,9 +20,14 @@ const skillSchema = mongoose.Schema(
       max: 10,
       required: [true, 'Evaluate your score from 0 - 10'],
     },
-    isKeySkill: {
-      type: Boolean,
-      default: false,
+    category: {
+      type: String,
+      lowercase: true,
+      enum: ['soft', 'technical', 'general'],
+      required: [
+        true,
+        'Select one category from the following: soft, technical, general',
+      ],
     },
     // user: {
     //   type: mongoose.Schema.Types.ObjectId,

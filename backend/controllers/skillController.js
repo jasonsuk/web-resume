@@ -42,7 +42,7 @@ export const getSkill = asyncHandler(async (req, res) => {
 // ACCESS: Private
 
 export const addSkill = asyncHandler(async (req, res) => {
-  const { name, maturity, score, isKeySkill } = req.body;
+  const { name, maturity, score, category } = req.body;
   // const user = req.user._id
 
   if (name && name.length === 0) {
@@ -54,7 +54,7 @@ export const addSkill = asyncHandler(async (req, res) => {
     name,
     maturity,
     score,
-    isKeySkill,
+    category,
     // user
   });
 
@@ -71,13 +71,13 @@ export const updateSkill = asyncHandler(async (req, res) => {
   const skill = await Skill.findById(skillId);
 
   if (skill) {
-    const { name, maturity, score, isKeySkill } = req.body;
+    const { name, maturity, score, category } = req.body;
 
     // Update with new data
     skill.name = name || skill.name;
     skill.maturity = maturity || skill.maturity;
     skill.score = score || skill.score;
-    skill.isKeySkill = isKeySkill || skill.isKeySkill;
+    skill.category = category || skill.category;
 
     // Save the change
     const updatedSkill = await skill.save();
