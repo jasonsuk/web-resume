@@ -39,21 +39,21 @@ const userSchema = mongoose.Schema(
   }
 );
 
-// // Verify password
-// userSchema.methods.verifyPassword = async function (password) {
-//   return bcrypt.compare(password, this.password);
-// };
-//
-// // Encrypting password for @POST /api/user
-// userSchema.pre('save', async function (next) {
-//   // Only apply when modifying password field
-//   if (!this.isModified('password')) {
-//     next();
-//   }
-//
-//   const salt = await bcrypt.genSalt(10);
-//   this.password = await bcrypt.hash(this.password, salt);
-// });
+// Verify password
+userSchema.methods.verifyPassword = async function (password) {
+  return bcrypt.compare(password, this.password);
+};
+
+// Encrypting password for @POST /api/user
+userSchema.pre('save', async function (next) {
+  // Only apply when modifying password field
+  if (!this.isModified('password')) {
+    next();
+  }
+
+  const salt = await bcrypt.genSalt(10);
+  this.password = await bcrypt.hash(this.password, salt);
+});
 
 // Construct the User model and export
 const User = mongoose.model('User', userSchema);

@@ -6,24 +6,24 @@ import getUserToken from '../utils/userToken.js';
 // ROUTE: POST /api/users/login
 // ACCESS: Private
 
-// export const signInUser = asyncHandler(async (req, res) => {
-//   const { email, password } = req.body;
-//
-//   const user = await User.findOne({ email });
-//
-//   if (user && (await user.verifyPassword(password))) {
-//     res.json({
-//       id: user._id,
-//       name: user.name,
-//       email: user.email,
-//       isAdmin: user.isAdmin,
-//       token: getUserToken(user._id),
-//     });
-//   } else {
-//     res.status(401);
-//     throw new Error('Invalid email or password.');
-//   }
-// });
+export const signInUser = asyncHandler(async (req, res) => {
+  const { email, password } = req.body;
+
+  const user = await User.findOne({ email });
+
+  if (user && (await user.verifyPassword(password))) {
+    res.json({
+      id: user._id,
+      name: user.name,
+      email: user.email,
+      isAdmin: user.isAdmin,
+      token: getUserToken(user._id),
+    });
+  } else {
+    res.status(401);
+    throw new Error('Invalid email or password.');
+  }
+});
 
 // =============================================
 // ADMIN USE
@@ -55,7 +55,7 @@ export const registerUser = asyncHandler(async (req, res) => {
       name: newUser.name,
       email: newUser.email,
       isAdmin: newUser.isAdmin,
-      // token: getUserToken(newUser._id),
+      token: getUserToken(newUser._id),
     });
   } else {
     res.status(400);
