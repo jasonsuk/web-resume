@@ -1,5 +1,5 @@
 import mongoose from 'mongoose';
-import bcript from 'bcryptjs';
+import bcrypt from 'bcryptjs';
 
 // Create users for accesing the site
 // admin purpose only
@@ -10,7 +10,7 @@ const userSchema = mongoose.Schema(
       type: String,
       required: true,
       trim: true,
-      lowercase: true,
+      // lowercase: true,
     },
     email: {
       type: String,
@@ -41,7 +41,7 @@ const userSchema = mongoose.Schema(
 
 // // Verify password
 // userSchema.methods.verifyPassword = async function (password) {
-//   bcript.compare(password, this.password);
+//   return bcrypt.compare(password, this.password);
 // };
 //
 // // Encrypting password for @POST /api/user
@@ -51,10 +51,10 @@ const userSchema = mongoose.Schema(
 //     next();
 //   }
 //
-//   const salt = bcript.genSalt(10);
-//   this.password = await bcript.hash(this.password, salt);
+//   const salt = await bcrypt.genSalt(10);
+//   this.password = await bcrypt.hash(this.password, salt);
 // });
-//
+
 // Construct the User model and export
 const User = mongoose.model('User', userSchema);
 export default User;
