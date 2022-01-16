@@ -1,0 +1,46 @@
+// Overwirte default variables
+$primary: #6d3e5d; //cosmic
+$secondary: #c86966; // contessa
+$dark: #29282b;
+$light: #e6e7e1;
+$success: #0fa;
+$info: #555;
+$warning: #e4b123;
+$danger: #f17a89;
+
+// Import bootstrap styles at the bottom
+@import '../node_modules/bootstrap/scss/bootstrap';
+@import '../node_modules/bootstrap/scss/variables';
+@import url('https://fonts.googleapis.com/css2?family=Dongle:wght@300;400;700&display=swap');
+
+$custom-font-size-default: 1.6rem;
+$custom-font-size-lg: 3.6rem;
+$custom-font-size-md: 2.4rem;
+$custom-font-size-sm: 1.2rem;
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  font-family: 'Dongle', sans-serif;
+  font-size: $custom-font-size-default;
+}
+
+main {
+  min-height: 85vh;
+}
+
+footer {
+  font-size: $custom-font-size-md;
+}
+
+.nav-custom {
+  padding: 0.8rem 1.6rem;
+  font-size: $custom-font-size-md;
+  min-height: 8vh;
+}
+
+.nav-custom__brand {
+  font-size: $custom-font-size-lg;
+}
