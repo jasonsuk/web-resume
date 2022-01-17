@@ -1,19 +1,30 @@
 import React from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { Container } from 'react-bootstrap';
 import Header from './components/Header.js';
 import Footer from './components/Footer.js';
+import HomePage from './pages/HomePage.js';
+import PortfolioPage from './pages/PortfolioPage.js';
+import CertificatePage from './pages/CertificatePage.js';
+import ContactPage from './pages/ContactPage.js';
 
 const App = () => {
   return (
-    <>
+    <Router>
       <Header />
-      <main>
-        <Container className='container-main'>
-          <h1>Welcome to my web resume.</h1>
+      <main className='py-5'>
+        <Container>
+          {/* react-router-dom V6 Syntax */}
+          <Routes>
+            <Route path='/' element={<HomePage />} exact />
+            <Route path='/portfolio' element={<PortfolioPage />} />
+            <Route path='/certificate' element={<CertificatePage />} />
+            <Route path='/contact' element={<ContactPage />} />
+          </Routes>
         </Container>
       </main>
       <Footer />
-    </>
+    </Router>
   );
 };
 

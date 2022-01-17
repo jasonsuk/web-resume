@@ -1,4 +1,5 @@
 import React from 'react';
+import { LinkContainer } from 'react-router-bootstrap';
 import { Navbar, Nav, Container } from 'react-bootstrap';
 
 const Header = () => {
@@ -12,24 +13,34 @@ const Header = () => {
         expand='lg'
       >
         <Container>
-          <Navbar.Brand href='/' className='nav-custom__brand'>
-            Home
-          </Navbar.Brand>
+          <LinkContainer to='/'>
+            <Navbar.Brand href='/' className='nav-custom__brand'>
+              Home
+            </Navbar.Brand>
+          </LinkContainer>
           <Navbar.Toggle aria-controls='responsive-navbar-nav' />
           <Navbar.Collapse id='responsive-navbar-nav'>
             <Nav className='ms-auto'>
-              <Nav.Link href='/portfolios'>
-                <i class='fas fa-briefcase'></i> Portfolios
-              </Nav.Link>
-              {/* <Nav.Link href='/blogs'>
-              <i class='fas fa-feather'></i> Blogs
-            </Nav.Link> */}
-              <Nav.Link href='/certificates'>
-                <i class='fas fa-school'></i> Certificate
-              </Nav.Link>
-              <Nav.Link href='/contact'>
-                <i class='far fa-paper-plane'></i> Contact
-              </Nav.Link>
+              <LinkContainer to='/portfolio'>
+                <Nav.Link>
+                  <i className='fas fa-briefcase'></i> Portfolios
+                </Nav.Link>
+              </LinkContainer>
+              {/* <LinkContainer to='/blogs'>
+                <Nav.Link>
+                  <i className='fas fa-feather'></i> Blogs
+                </Nav.Link>
+              </LinkContainer> */}
+              <LinkContainer to='/certificate'>
+                <Nav.Link>
+                  <i className='fas fa-school'></i> Certificate
+                </Nav.Link>
+              </LinkContainer>
+              <LinkContainer to='/contact'>
+                <Nav.Link>
+                  <i className='far fa-paper-plane'></i> Contact
+                </Nav.Link>
+              </LinkContainer>
             </Nav>
           </Navbar.Collapse>
         </Container>
