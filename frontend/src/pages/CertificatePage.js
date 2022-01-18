@@ -1,9 +1,20 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import Banner from '../components/Banner.js';
-import CertAccordion from '../components/CertAccordion.js';
-import { Row, Col, ListGroup, Badge } from 'react-bootstrap';
+import { Accordion, ListGroup, Badge } from 'react-bootstrap';
+
+import { listCertificates } from '../redux/actions/certificateActions.js';
 
 const CertificatePage = () => {
+  const dispatch = useDispatch();
+
+  const certificateList = useSelector((state) => state.certificateList);
+  const { loading, error, certificates } = certificateList;
+
+  useEffect(() => {
+    dispatch(listCertificates());
+  }, [dispatch]);
+
   return (
     <>
       <section className='banner-section'>
@@ -14,35 +25,38 @@ const CertificatePage = () => {
           }
         />
       </section>
-      <Row>
-        <Col md={6}>
-          <CertAccordion />
-        </Col>
-        <Col>
-          <ListGroup variant='flush'>
-            <ListGroup.Item
-              as='li'
-              className='d-flex justify-content-between align-items-start'
-            >
-              <div className='ms-2 me-auto'>
-                <div className='fw-bold'>Organization</div>
-                Related skills
-              </div>
-              <Badge variant='primary' pill>
-                Completed at
-              </Badge>
-            </ListGroup.Item>
-            <ListGroup.Item>
-              Lorem ipsum odor amet, consectetuer adipiscing elit. Ac purus in
-              massa egestas mollis varius; dignissim elementum. Mollis tincidunt
-              mattis hendrerit dolor eros enim, nisi ligula ornare. Hendrerit
-              parturient habitant pharetra rutrum gravida porttitor eros
-              feugiat. Mollis elit sodales taciti duis praesent id. Consequat
-              urna vitae morbi nunc congue.
-            </ListGroup.Item>
-          </ListGroup>
-        </Col>
-      </Row>
+      <section>
+        <Accordion defaultActiveKey='0' flush>
+          {certificates.map((certificate) => (
+            <Accordion.Item eventKey={certificate._id} key={certificate._id}>
+              <Accordion.Header>
+                {certificate.name}
+                {/* {certificate.isKeyCertificate && (
+                  <Badge className='badge-custom' pill bg='secondary'>
+                    Core
+                  </Badge>
+                )} */}
+              </Accordion.Header>
+
+              <Accordion.Body>
+                <ListGroup variant='flush'>
+                  <ListGroup.Item className='fw-bold'>
+                    {certificate.summary}
+                  </ListGroup.Item>
+                  <ListGroup.Item>
+                    <span className='fw-bold'>Organization: </span>
+                    {certificate.organization}
+                  </ListGroup.Item>
+                  <ListGroup.Item>
+                    <span className='fw-bold'>Completed at: </span>
+                    {certificate.completedAt.substring(0, 10)}
+                  </ListGroup.Item>
+                </ListGroup>
+              </Accordion.Body>
+            </Accordion.Item>
+          ))}
+        </Accordion>
+      </section>
     </>
   );
 };

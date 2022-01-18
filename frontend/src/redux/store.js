@@ -7,9 +7,12 @@ import {
   portfolioDetailReducer,
 } from './reducers/portfolioReducers.js';
 
+import { certificateListReducer } from './reducers/certificateReducers.js';
+
 const reducer = combineReducers({
   portfolioList: portfolioListReducer,
   portfolioDetail: portfolioDetailReducer,
+  certificateList: certificateListReducer,
 });
 const initialState = {};
 const middlewares = [thunk];

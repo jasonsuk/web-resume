@@ -119,3 +119,21 @@ footer {
   font-size: $custom-font-size-sm;
   font-weight: 300;
 }
+
+// ACCORDION
+
+.accordion-button {
+  font-size: $custom-font-size-md;
+}
+
+.accordion-body {
+  font-size: $custom-font-size-default;
+  font-weight: 300;
+}
+
+.badge-custom {
+  position: absolute;
+  right: 5rem;
+  min-width: 4.5rem;
+  font-size: custom-font-size-xs;
+}
