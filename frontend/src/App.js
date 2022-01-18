@@ -5,6 +5,7 @@ import Header from './components/Header.js';
 import Footer from './components/Footer.js';
 import HomePage from './pages/HomePage.js';
 import PortfolioPage from './pages/PortfolioPage.js';
+import PortfolioDetailPage from './pages/PortfolioDetailPage.js';
 import CertificatePage from './pages/CertificatePage.js';
 import ContactPage from './pages/ContactPage.js';
 
@@ -18,6 +19,7 @@ const App = () => {
           <Routes>
             <Route path='/' element={<HomePage />} exact />
             <Route path='/portfolio' element={<PortfolioPage />} />
+            <Route path='/portfolio/:id' element={<PortfolioDetailPage />} />
             <Route path='/certificate' element={<CertificatePage />} />
             <Route path='/contact' element={<ContactPage />} />
           </Routes>

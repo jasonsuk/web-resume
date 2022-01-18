@@ -1,8 +1,22 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { Row, Col } from 'react-bootstrap';
 import Banner from '../components/Banner.js';
+import PortfolioCard from '../components/PortfolioCard.js';
+import { listPortfolios } from '../redux/actions/portfolioActions.js';
 
 const PortfolioPage = () => {
+  // const [portfolios, setPortfolios] = useState([])
+
+  const dispatch = useDispatch();
+
+  const portfolioList = useSelector((state) => state.portfolioList);
+  const { loading, error, portfolios } = portfolioList;
+
+  useEffect(() => {
+    dispatch(listPortfolios());
+  }, [dispatch]);
+
   return (
     <>
       <section className='banner-section'>
@@ -13,17 +27,11 @@ const PortfolioPage = () => {
       </section>
       <section>
         <Row>
-          <h2>Card component comes here</h2>
-          <Col md={3}>Card1</Col>
-          <Col md={3}>Card2</Col>
-          <Col md={3}>Card3</Col>
-          <Col md={3}>Card4</Col>
-        </Row>
-        <Row>
-          <Col md={3}>Card5</Col>
-          <Col md={3}>Card6</Col>
-          <Col md={3}>Card7</Col>
-          <Col md={3}>Card8</Col>
+          {portfolios.map((portfolio) => (
+            <Col md={3} key={portfolio._id}>
+              <PortfolioCard portfolio={portfolio} />
+            </Col>
+          ))}
         </Row>
       </section>
     </>
