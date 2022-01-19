@@ -9,11 +9,23 @@ import {
 
 import { certificateListReducer } from './reducers/certificateReducers.js';
 
+import { skillListReducer } from './reducers/skillReducers.js';
+
+// import { userLoginReducer } from './reducers/userReducers.js';
+
 const reducer = combineReducers({
   portfolioList: portfolioListReducer,
   portfolioDetail: portfolioDetailReducer,
   certificateList: certificateListReducer,
+  skillList: skillListReducer,
+  // userLogin: userLoginReducer,
 });
+
+// const userInfoFromStorage = localStorage.getItem('userInfo')
+//   ? JSON.parse(localStorage.getItem('userInfo'))
+//   : null;
+
+// const initialState = { userLogin: { userInfo: userInfoFromStorage } };
 const initialState = {};
 const middlewares = [thunk];
 

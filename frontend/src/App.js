@@ -14,16 +14,14 @@ const App = () => {
     <Router>
       <Header />
       <main className='py-5'>
-        <Container>
-          {/* react-router-dom V6 Syntax */}
-          <Routes>
-            <Route path='/' element={<HomePage />} exact />
-            <Route path='/portfolio' element={<PortfolioPage />} />
-            <Route path='/portfolio/:id' element={<PortfolioDetailPage />} />
-            <Route path='/certificate' element={<CertificatePage />} />
-            <Route path='/contact' element={<ContactPage />} />
-          </Routes>
-        </Container>
+        {/* react-router-dom V6 Syntax */}
+        <Routes>
+          <Route path='/' element={<HomePage />} exact />
+          <Route path='/portfolio' element={<PortfolioPage />} />
+          <Route path='/portfolio/:id' element={<PortfolioDetailPage />} />
+          <Route path='/certificate' element={<CertificatePage />} />
+          <Route path='/contact' element={<ContactPage />} />
+        </Routes>
       </main>
       <Footer />
     </Router>

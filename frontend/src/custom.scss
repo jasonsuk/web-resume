@@ -20,10 +20,6 @@ $custom-font-size-md: 2.4rem;
 $custom-font-size-sm: 1.2rem;
 $custom-font-size-xs: 0.8rem;
 
-$custom-padding-lg: 12rem;
-$custom-padding-md: 8rem;
-$custom-padding-sm: 4rem;
-
 // ====================
 // CORE STRUCTURE
 // ====================
@@ -31,6 +27,13 @@ $custom-padding-sm: 4rem;
 // html {
 //   font-size: 62.5%;
 // }
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+}
 
 body {
   font-family: 'Dongle', sans-serif;
@@ -45,6 +48,27 @@ footer {
   font-size: $custom-font-size-default;
 }
 
+h1 {
+  font-size: $custom-font-size-xl;
+  font-weight: 700;
+}
+h2 {
+  font-size: $custom-font-size-lg;
+  font-weight: 700;
+}
+h3 {
+  font-size: $custom-font-size-md;
+  font-weight: 500;
+}
+h4 {
+  font-size: $custom-font-size-default;
+  font-weight: 500;
+}
+h5 {
+  font-size: $custom-font-size-sm;
+  font-weight: 300;
+}
+
 .nav-custom {
   font-size: $custom-font-size-default;
 }
@@ -53,77 +77,70 @@ footer {
   font-size: $custom-font-size-lg;
 }
 
+.form-control {
+  font-size: $custom-font-size-sm;
+  opacity: 0.6;
+}
+
 // ====================
 // HOMEPAGE: SECTIONS
 // ====================
 
-.home-section-intro {
-  padding: $custom-padding-md;
-  font-size: $custom-font-size-md;
+.home-section {
+  padding: 4rem 1.2rem;
+
+  &-intro {
+    background: $secondary;
+  }
+  &-portfolio {
+    background: $light;
+  }
+  &-skill {
+    background: $warning;
+  }
 }
 
-.home-section-background {
-  background: $secondary;
-  padding: $custom-padding-md;
+.home-section-image {
+  width: 50%;
+  opacity: 0.8;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 10px;
 }
 
-.home-section-portfolio {
-  background: $light;
-  padding: $custom-padding-md;
-}
-
-.home-section-skill {
-  background: $warning;
-  padding: $custom-padding-md;
+.home-body {
+  @media screen and (min-width: 768px) {
+    margin-left: 1.2rem;
+  }
 }
 
 // ====================
 // SECTIONS
 // ====================
 
-.banner-section {
-  min-height: 18vh;
-  margin-bottom: 2.4rem;
+.banner-box {
+  height: 18vh;
+  margin-bottom: 5rem;
 }
-
-// .contact-section-email {
-//   margin-top: 3.6rem;
-// }
 
 // ====================
 // ELEMENTS
 // ==================
 
-.heading-style1-primary {
-  font-size: $custom-font-size-xl;
-  font-weight: 700;
-}
-
-.heading-style1-secondary {
-  font-size: $custom-font-size-lg;
-  font-weight: 500;
-  margin-top: -1.6rem;
-}
-
 .heading-style2-primary {
   font-size: $custom-font-size-lg;
-  font-weight: 700;
-}
-
-.heading-style2-secondary {
-  font-size: $custom-font-size-md;
-  font-weight: 500;
 }
 
 .heading-style2-text {
-  font-size: $custom-font-size-sm;
+  font-size: $custom-font-size-default;
   font-weight: 300;
 }
 
 // ACCORDION
 
 .accordion-button {
-  font-size: $custom-font-size-md;
+  font-size: $custom-font-size-default;
 }
 
 .accordion-body {
@@ -131,9 +148,22 @@ footer {
   font-weight: 300;
 }
 
+// BADGE
+
 .badge-custom {
   position: absolute;
   right: 5rem;
   min-width: 4.5rem;
   font-size: custom-font-size-xs;
+}
+
+// BUTTONS
+.btn {
+  font-size: $custom-font-size-sm;
+}
+
+// FLEX CUSTOM
+.row {
+  --bs-gutter-x: 0.4rem;
+  --bs-gutter-y: 0.4rem;
 }
