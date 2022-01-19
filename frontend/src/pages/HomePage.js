@@ -12,6 +12,9 @@ import {
 } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
 
+import Loader from '../components/Loader.js';
+import Message from '../components/Message.js';
+
 import { listPortfolios } from '../redux/actions/portfolioActions.js';
 import { listSkills } from '../redux/actions/skillActions.js';
 
@@ -82,76 +85,88 @@ const HomePage = () => {
           </Row>
         </Container>
       </section>
-      <section className='home-section home-section-portfolio'>
-        <Container>
-          <Row className='text-center'>
-            <h3>Portfolios</h3>
-            <h2 style={{ marginTop: '-1.6rem' }}>WHAT I DO</h2>
-          </Row>
-          <Row>
-            {portfolios
-              .sort((a, b) => a.createdAt - b.createdAt)
-              .slice(0, 4)
-              .map((portfolio) => (
-                <Col md={3} key={portfolio._id}>
-                  <Card>
-                    <Card.Body>
-                      <Card.Title>{portfolio.name}</Card.Title>
-                      <Card.Text>{portfolio.summary}</Card.Text>
-                    </Card.Body>
-                  </Card>
-                </Col>
-              ))}
-          </Row>
-          <LinkContainer to='/portfolio' className='d-grid gap-2 mt-3'>
-            <Button variant='dark'>
-              See all {portfolios.length} portfolios
-            </Button>
-          </LinkContainer>
-        </Container>
-      </section>
-      <section className='home-section home-section-skill'>
-        <Container>
-          <Row className='text-center'>
-            <h3>Skills</h3>
-            <h2 style={{ marginTop: '-1.6rem' }}>HOW I DO</h2>
-          </Row>
-          <Row>
-            <Col md={6}>
-              <h4>Technical skills</h4>
-              <ListGroup variant='flush'>
-                {skills
-                  .filter((skill) => skill.category == 'technical')
-                  .map((techSkill) => (
-                    <ListGroup.Item key={techSkill._id}>
-                      {techSkill.name}
-                      <Badge
-                        className='me-2'
-                        bg='secondary'
-                        style={{ position: 'absolute', right: 0 }}
-                      >
-                        {techSkill.maturity}
-                      </Badge>
-                    </ListGroup.Item>
-                  ))}
-              </ListGroup>
-            </Col>
-            <Col md={6}>
-              <h4>Transferable skills</h4>
-              <ListGroup variant='flush'>
-                {skills
-                  .filter((skill) => skill.category !== 'technical')
-                  .slice(0, countTechSkills)
-                  .map((techSkill) => (
-                    <ListGroup.Item key={techSkill._id}>
-                      {techSkill.name}
-                    </ListGroup.Item>
-                  ))}
-              </ListGroup>
-            </Col>
-          </Row>
-        </Container>
-      </section>
+      {loadingPortfolio ? (
+        <Loader />
+      ) : errorPortfolio ? (
+        <Message>{errorPortfolio}</Message>
+      ) : (
+        <section className='home-section home-section-portfolio'>
+          <Container>
+            <Row className='text-center'>
+              <h3>Portfolios</h3>
+              <h2 style={{ marginTop: '-1.6rem' }}>WHAT I DO</h2>
+            </Row>
+            <Row>
+              {portfolios
+                .sort((a, b) => a.createdAt - b.createdAt)
+                .slice(0, 4)
+                .map((portfolio) => (
+                  <Col md={3} key={portfolio._id}>
+                    <Card>
+                      <Card.Body>
+                        <Card.Title>{portfolio.name}</Card.Title>
+                        <Card.Text>{portfolio.summary}</Card.Text>
+                      </Card.Body>
+                    </Card>
+                  </Col>
+                ))}
+            </Row>
+            <LinkContainer to='/portfolio' className='d-grid gap-2 mt-3'>
+              <Button variant='dark'>
+                See all {portfolios.length} portfolios
+              </Button>
+            </LinkContainer>
+          </Container>
+        </section>
+      )}
+      {loadingSkill ? (
+        <Loader />
+      ) : errorSkill ? (
+        <Message>{errorSkill}</Message>
+      ) : (
+        <section className='home-section home-section-skill'>
+          <Container>
+            <Row className='text-center'>
+              <h3>Skills</h3>
+              <h2 style={{ marginTop: '-1.6rem' }}>HOW I DO</h2>
+            </Row>
+            <Row>
+              <Col md={6}>
+                <h4>Technical skills</h4>
+                <ListGroup variant='flush'>
+                  {skills
+                    .filter((skill) => skill.category === 'technical')
+                    .map((techSkill) => (
+                      <ListGroup.Item key={techSkill._id}>
+                        {techSkill.name}
+                        <Badge
+                          className='me-2'
+                          bg='secondary'
+                          style={{ position: 'absolute', right: 0 }}
+                        >
+                          {techSkill.maturity}
+                        </Badge>
+                      </ListGroup.Item>
+                    ))}
+                </ListGroup>
+              </Col>
+              <Col md={6}>
+                <h4>Transferable skills</h4>
+                <ListGroup variant='flush'>
+                  {skills
+                    .filter((skill) => skill.category !== 'technical')
+                    .slice(0, countTechSkills)
+                    .map((techSkill) => (
+                      <ListGroup.Item key={techSkill._id}>
+                        {techSkill.name}
+                      </ListGroup.Item>
+                    ))}
+                </ListGroup>
+              </Col>
+            </Row>
+          </Container>
+        </section>
+      )}
     </>
   );
 };
