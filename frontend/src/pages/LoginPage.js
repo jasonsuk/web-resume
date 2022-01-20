@@ -33,8 +33,8 @@ const LoginPage = () => {
 
   return (
     <>
-      {error && <Message>{error}</Message>}
       {loading && <Loader />}
+      {error && <Message variant='warning'>{error}</Message>}
       <FormContainer>
         <Form onSubmit={submitHandler}>
           <Form.Group className='mb-3' controlId='email'>

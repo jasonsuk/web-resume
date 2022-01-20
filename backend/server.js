@@ -10,33 +10,39 @@ import SkillRouter from './routers/skillRouter.js';
 import ContactRouter from './routers/contactRouter.js';
 import UserRouter from './routers/userRouter.js';
 
+import { notFoundError, errorHandler } from './middleware/errorHandler.js';
+
 // Initialize environmental variables
 dotenv.config();
+
+// Connect to the database
+connectDB();
 
 // Initialize express server app
 const app = express();
 
-// Connect to the database
-connectDB();
+// Middlware to read req.body in JSON
+app.use(express.json());
 
 // Third-party middleware for logging on development node
 if (process.env.NODE_ENV == 'development') {
   app.use(morgan('dev'));
 }
 
-// Middlware to read req.body in JSON
-app.use(express.json());
+app.use('/api/portfolios', PortfolioRouter);
+app.use('/api/certificates', CertificateRouter);
+app.use('/api/skills', SkillRouter);
+app.use('/api/contacts', ContactRouter);
+app.use('/api/users', UserRouter);
 
 // Routing
 app.get('/', (req, res) => {
   res.send('API is running');
 });
 
-app.use('/api/portfolios', PortfolioRouter);
-app.use('/api/certificates', CertificateRouter);
-app.use('/api/skills', SkillRouter);
-app.use('/api/contacts', ContactRouter);
-app.use('/api/users', UserRouter);
+// Error handler
+app.use(notFoundError);
+app.use(errorHandler);
 
 // Run server
 const PORT = process.env.PORT;
