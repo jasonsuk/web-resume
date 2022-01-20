@@ -8,10 +8,13 @@ import PortfolioDetailPage from './pages/PortfolioDetailPage.js';
 import CertificatePage from './pages/CertificatePage.js';
 import ContactPage from './pages/ContactPage.js';
 import LoginPage from './pages/LoginPage.js';
+
+// ADMIN
 import CertificateListPage from './pages/CertificateListPage.js';
-import SkillListPage from './pages/SkillListPage.js';
-import PortfolioListPage from './pages/PortfolioListPage.js';
 import CertificateEditPage from './pages/CertificateEditPage.js';
+import SkillListPage from './pages/SkillListPage.js';
+import SkillEditPage from './pages/SkillEditPage.js';
+import PortfolioListPage from './pages/PortfolioListPage.js';
 
 const App = () => {
   return (
@@ -32,6 +35,7 @@ const App = () => {
             element={<CertificateEditPage />}
           />
           <Route path='/admin/skill' element={<SkillListPage />} />
+          <Route path='/admin/skill/:id/edit' element={<SkillEditPage />} />
           <Route path='/admin/portfolio' element={<PortfolioListPage />} />
         </Routes>
       </main>

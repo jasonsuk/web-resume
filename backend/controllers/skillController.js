@@ -42,19 +42,13 @@ export const getSkill = asyncHandler(async (req, res) => {
 // ACCESS: Private
 
 export const addSkill = asyncHandler(async (req, res) => {
-  const { name, maturity, score, category } = req.body;
   // const user = req.user._id
 
-  if (name && name.length === 0) {
-    res.status(400);
-    throw new Error(`No skill found.`);
-  }
-
   const newSkill = await new Skill({
-    name,
-    maturity,
-    score,
-    category,
+    name: 'Skill - New',
+    maturity: 'beginner',
+    score: 4,
+    category: 'analytics',
     // user
   });
 

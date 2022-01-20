@@ -15,7 +15,13 @@ import {
   certificateDeleteReducer,
 } from './reducers/certificateReducers.js';
 
-import { skillListReducer } from './reducers/skillReducers.js';
+import {
+  skillListReducer,
+  skillDetailReducer,
+  skillCreateReducer,
+  skillUpdateReducer,
+  skillDeleteReducer,
+} from './reducers/skillReducers.js';
 
 import { userLoginReducer } from './reducers/userReducers.js';
 
@@ -28,6 +34,10 @@ const reducer = combineReducers({
   certificateUpdate: certificateUpdateReducer,
   certificateDelete: certificateDeleteReducer,
   skillList: skillListReducer,
+  skillDetail: skillDetailReducer,
+  skillCreate: skillCreateReducer,
+  skillUpdate: skillUpdateReducer,
+  skillDelete: skillDeleteReducer,
   userLogin: userLoginReducer,
 });
 
