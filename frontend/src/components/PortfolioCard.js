@@ -8,7 +8,7 @@ const PortfolioCard = ({ portfolio }) => {
       <Card className='mt-5'>
         {portfolio.image.length > 0 && (
           <Link to={`/portfolio/${portfolio._id}`}>
-            <Card.Img src={portfolio.image} />
+            <Card.Img src={portfolio.image} style={{ minHeight: '15rem' }} />
           </Link>
         )}
         <Card.Body>

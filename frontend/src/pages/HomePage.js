@@ -31,14 +31,18 @@ const HomePage = () => {
   const skillList = useSelector((state) => state.skillList);
   const { loading: loadingSkill, error: errorSkill, skills } = skillList;
 
+  // Custom styling
+  const badgeStyle = {
+    position: 'absolute',
+    right: '0.5rem',
+    width: '6rem',
+    textAlign: 'center',
+  };
+
   useEffect(() => {
     dispatch(listPortfolios());
     dispatch(listSkills());
   }, [dispatch]);
-
-  const countTechSkills = skills.filter(
-    (skill) => skill.category === 'technical'
-  ).length;
 
   return (
     <>
@@ -132,33 +136,65 @@ const HomePage = () => {
             </Row>
             <Row>
               <Col md={6}>
-                <h4>Technical skills</h4>
+                <h4 className='text-center'>Programming</h4>
                 <ListGroup variant='flush'>
                   {skills
-                    .filter((skill) => skill.category === 'technical')
-                    .map((techSkill) => (
-                      <ListGroup.Item key={techSkill._id}>
-                        {techSkill.name}
-                        <Badge
-                          className='me-2'
-                          bg='secondary'
-                          style={{ position: 'absolute', right: 0 }}
-                        >
-                          {techSkill.maturity}
+                    .filter((skill) => skill.category === 'programming')
+                    .sort((a, b) => b.score - a.score)
+                    .slice(0, 3)
+                    .map((skill) => (
+                      <ListGroup.Item key={skill._id}>
+                        {skill.name}
+                        <Badge bg='secondary' style={badgeStyle}>
+                          {skill.maturity}
                         </Badge>
                       </ListGroup.Item>
                     ))}
                 </ListGroup>
               </Col>
               <Col md={6}>
-                <h4>Transferable skills</h4>
+                <h4 className='text-center'>Data analytics</h4>
                 <ListGroup variant='flush'>
                   {skills
-                    .filter((skill) => skill.category !== 'technical')
-                    .slice(0, countTechSkills)
-                    .map((techSkill) => (
-                      <ListGroup.Item key={techSkill._id}>
-                        {techSkill.name}
+                    .filter((skill) => skill.category === 'analytics')
+                    .sort((a, b) => b.score - a.score)
+                    .slice(0, 3)
+                    .map((skill) => (
+                      <ListGroup.Item key={skill._id}>
+                        {skill.name}
+                        <Badge bg='secondary' style={badgeStyle}>
+                          {skill.maturity}
+                        </Badge>
+                      </ListGroup.Item>
+                    ))}
+                </ListGroup>
+              </Col>
+            </Row>
+            <Row className='mt-3'>
+              <Col md={6}>
+                <h4 className='text-center'>Business expertise</h4>
+                <ListGroup variant='flush'>
+                  {skills
+                    .filter((skill) => skill.category === 'business')
+                    .sort((a, b) => b.score - a.score)
+                    .slice(0, 3)
+                    .map((skill) => (
+                      <ListGroup.Item key={skill._id}>
+                        {skill.name}
+                      </ListGroup.Item>
+                    ))}
+                </ListGroup>
+              </Col>
+              <Col md={6}>
+                <h4 className='text-center'>General</h4>
+                <ListGroup variant='flush'>
+                  {skills
+                    .filter((skill) => skill.category === 'general')
+                    .sort((a, b) => b.score - a.score)
+                    .slice(0, 3)
+                    .map((skill) => (
+                      <ListGroup.Item key={skill._id}>
+                        {skill.name}
                       </ListGroup.Item>
                     ))}
                 </ListGroup>

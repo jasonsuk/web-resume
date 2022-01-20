@@ -86,6 +86,15 @@ h5 {
   font-size: $custom-font-size-sm;
 }
 
+.btn-icon {
+  width: 2.4rem;
+  height: 2.4rem;
+  margin: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .toast {
   font-size: $custom-font-size-sm;
 }
@@ -170,11 +179,20 @@ h5 {
   font-size: $custom-font-size-sm;
 }
 
+// CALENDAR
+.react-date-picker {
+  font-family: 'Dongle', sans-serif;
+  font-weight: 300;
+  font-size: $custom-font-size-sm;
+  text-align: center;
+  margin-left: 3.6rem;
+}
+
 // FLEX CUSTOM
 
 .container {
   @media screen and (min-width: 768px) {
-    width: 75vw;
+    min-width: 75vw;
   }
 }
 

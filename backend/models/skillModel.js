@@ -23,10 +23,10 @@ const skillSchema = mongoose.Schema(
     category: {
       type: String,
       lowercase: true,
-      enum: ['soft', 'technical', 'general'],
+      enum: ['business', 'analytics', 'programming', 'general'],
       required: [
         true,
-        'Select one category from the following: soft, technical, general',
+        'Select one category from the following: business, analytics, programming, general',
       ],
     },
     // user: {

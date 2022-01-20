@@ -7,7 +7,13 @@ import {
   portfolioDetailReducer,
 } from './reducers/portfolioReducers.js';
 
-import { certificateListReducer } from './reducers/certificateReducers.js';
+import {
+  certificateListReducer,
+  certificateDetailReducer,
+  certificateCreateReducer,
+  certificateUpdateReducer,
+  certificateDeleteReducer,
+} from './reducers/certificateReducers.js';
 
 import { skillListReducer } from './reducers/skillReducers.js';
 
@@ -17,6 +23,10 @@ const reducer = combineReducers({
   portfolioList: portfolioListReducer,
   portfolioDetail: portfolioDetailReducer,
   certificateList: certificateListReducer,
+  certificateDetail: certificateDetailReducer,
+  certificateCreate: certificateCreateReducer,
+  certificateUpdate: certificateUpdateReducer,
+  certificateDelete: certificateDeleteReducer,
   skillList: skillListReducer,
   userLogin: userLoginReducer,
 });

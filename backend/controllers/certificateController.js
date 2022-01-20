@@ -31,21 +31,15 @@ export const getCertificate = asyncHandler(async (req, res) => {
 // ACCESS: Private
 
 export const addCertificate = asyncHandler(async (req, res) => {
-  const { name, summary, organization, completedAt, isKeyCertificate } =
-    req.body;
   // const userId = req.user._id;
 
-  if (name && name.length === 0) {
-    res.status(400);
-    throw new Error(`No certificate found.`);
-  }
-
   const newCertificate = await new Certificate({
-    name,
-    summary,
-    organization,
-    completedAt,
-    isKeyCertificate,
+    // Dummy certificate
+    name: 'Certificate name - new',
+    summary: 'Certificate description - new',
+    organization: 'Issuing organization- new',
+    completedAt: Date.now(),
+    isKeyCertificate: false,
   });
 
   const createdCertificate = await newCertificate.save();
