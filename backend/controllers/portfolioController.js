@@ -31,22 +31,15 @@ export const getPortfolio = asyncHandler(async (req, res) => {
 // ACCESS: Private
 
 export const addPortfolio = asyncHandler(async (req, res) => {
-  const { name, summary, description, image, completedAt, isKeyPortfolio } =
-    req.body;
   // const userId = req.user._id;
 
-  if (name && name.length === 0) {
-    res.status(400);
-    throw new Error(`No portfolio found.`);
-  }
-
   const newPortfolio = await new Portfolio({
-    name,
-    summary,
-    description,
-    image,
-    completedAt,
-    isKeyPortfolio,
+    name: 'Portfolio - new',
+    summary: 'Summary for a new portfolio',
+    description: 'Description for a new portfolio',
+    image: '',
+    completedAt: Date.now(),
+    isKeyPortfolio: false,
   });
 
   const createdPortfolio = await newPortfolio.save();
@@ -86,7 +79,7 @@ export const deletePortfolio = asyncHandler(async (req, res) => {
   const portfolio = await Portfolio.findById(portfolioId);
 
   if (portfolio) {
-    await Portfolio.remove();
+    await portfolio.remove();
     res.json({
       message: `Successfully deleted the portfolio ${portfolioId}`,
     });

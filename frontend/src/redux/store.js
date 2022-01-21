@@ -5,6 +5,9 @@ import { composeWithDevTools } from 'redux-devtools-extension';
 import {
   portfolioListReducer,
   portfolioDetailReducer,
+  portfolioCreateReducer,
+  portfolioUpdateReducer,
+  portfolioDeleteReducer,
 } from './reducers/portfolioReducers.js';
 
 import {
@@ -28,6 +31,9 @@ import { userLoginReducer } from './reducers/userReducers.js';
 const reducer = combineReducers({
   portfolioList: portfolioListReducer,
   portfolioDetail: portfolioDetailReducer,
+  portfolioCreate: portfolioCreateReducer,
+  portfolioUpdate: portfolioUpdateReducer,
+  portfolioDelete: portfolioDeleteReducer,
   certificateList: certificateListReducer,
   certificateDetail: certificateDetailReducer,
   certificateCreate: certificateCreateReducer,

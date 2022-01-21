@@ -1,4 +1,5 @@
 // Load packages (ES6)
+import path from 'path';
 import express from 'express';
 import dotenv from 'dotenv';
 import morgan from 'morgan';
@@ -9,6 +10,7 @@ import CertificateRouter from './routers/certificateRouter.js';
 import SkillRouter from './routers/skillRouter.js';
 import ContactRouter from './routers/contactRouter.js';
 import UserRouter from './routers/userRouter.js';
+import FileUploadRouter from './routers/fileUploadRouter.js';
 
 import { notFoundError, errorHandler } from './middleware/errorHandler.js';
 
@@ -34,6 +36,11 @@ app.use('/api/certificates', CertificateRouter);
 app.use('/api/skills', SkillRouter);
 app.use('/api/contacts', ContactRouter);
 app.use('/api/users', UserRouter);
+app.use('/api/uploads', FileUploadRouter);
+
+// Set folders static
+const __dirname = path.resolve();
+app.use('/uploads', express.static(path.join(__dirname, '/uploads')));
 
 // Routing
 app.get('/', (req, res) => {
