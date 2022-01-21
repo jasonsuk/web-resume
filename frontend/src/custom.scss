@@ -20,6 +20,8 @@ $custom-font-size-md: 2.4rem;
 $custom-font-size-sm: 1.2rem;
 $custom-font-size-xs: 0.8rem;
 
+$default-box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+
 // ====================
 // CORE STRUCTURE
 // ====================
@@ -45,6 +47,8 @@ main {
 }
 
 footer {
+  min-height: 10vh;
+  padding: 2.4rem 0;
   font-size: $custom-font-size-default;
 }
 
@@ -69,12 +73,17 @@ h5 {
   font-weight: 300;
 }
 
-.nav-custom {
-  font-size: $custom-font-size-default;
+a {
+  text-decoration: none;
 }
 
-.nav-custom__brand {
-  font-size: $custom-font-size-lg;
+.nav-custom {
+  font-size: $custom-font-size-default;
+  padding: 0 3.6rem 0;
+
+  &-brand {
+    font-size: $custom-font-size-lg;
+  }
 }
 
 .form-control {
@@ -103,32 +112,47 @@ h5 {
 // HOMEPAGE: SECTIONS
 // ====================
 
+.home-contact-links {
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  position: fixed;
+  left: 3.6rem;
+
+  @media screen and (max-width: 768px) {
+    display: none;
+  }
+}
+
 .home-section {
-  padding: 4rem 1.2rem;
+  padding: 4.8rem 6rem;
+  margin-right: 0;
 
   &-intro {
-    background: $secondary;
+    background: #fff;
+  }
+  &-background {
+    background: $dark;
+    color: $light;
   }
   &-portfolio {
-    background: $light;
-  }
-  &-skill {
     background: $warning;
   }
+  &-skill {
+    background: $light;
+  }
 }
 
-.home-section-image {
-  width: 50%;
-  opacity: 0.8;
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  border-radius: 10px;
-}
-
-.home-body {
-  @media screen and (min-width: 768px) {
-    margin-left: 1.2rem;
+.home-section-contents {
+  & > h2,
+  h3 {
+    text-align: center;
+  }
+  & > h4 {
+    text-align: center;
+    margin: 0 auto;
+    width: 85%;
   }
 }
 
@@ -137,8 +161,37 @@ h5 {
 // ====================
 
 .banner-box {
-  height: 18vh;
+  height: 20vh;
+  padding-top: 5rem;
   margin-bottom: 5rem;
+}
+
+.home-background-image {
+  opacity: 0.8;
+  display: block;
+  position: relative;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  border-radius: 10px;
+  box-shadow: $default-box-shadow;
+
+  @media screen and (min-width: 1024px) {
+    width: 55%;
+  }
+}
+
+.home-background-textbox {
+  padding: 1.6rem;
+  border: 1px solid #fff;
+  border-radius: 8px;
+  color: $light;
+  background-color: $dark;
+
+  @media screen and (min-width: 1024px) {
+    margin-left: -2.4rem;
+  }
 }
 
 // ====================
@@ -154,8 +207,46 @@ h5 {
   font-weight: 300;
 }
 
-// ACCORDION
+// CARD
+.card {
+  box-shadow: $default-box-shadow;
+  transition-duration: 3s;
+  transition: 1.5s;
+  text-decoration: none;
 
+  &-title {
+    min-height: 4.5rem;
+  }
+
+  &-text {
+    min-height: 5.5rem;
+  }
+
+  &-img {
+    max-height: 4rem;
+  }
+}
+
+// LIST GROUP
+.list-group {
+  border-radius: 10px;
+
+  & > * {
+    margin-top: 0.4rem;
+  }
+}
+
+.list-group-item {
+  border-radius: 10px;
+  transition-duration: 1s;
+  transition: 1.5s;
+
+  &:hover {
+    transform: translateX(-5px);
+  }
+}
+
+// ACCORDION
 .accordion-button {
   font-size: $custom-font-size-default;
 }
@@ -166,17 +257,23 @@ h5 {
 }
 
 // BADGE
-
 .badge-custom {
   position: absolute;
   right: 5rem;
   min-width: 4.5rem;
-  font-size: custom-font-size-xs;
+  font-size: $custom-font-size-xs;
 }
 
 // BUTTONS
 .btn {
   font-size: $custom-font-size-sm;
+  box-shadow: $default-box-shadow;
+  transition-duration: 2s;
+  transition: 1.5s;
+
+  &:hover {
+    letter-spacing: 1.5px;
+  }
 }
 
 // CALENDAR
@@ -192,7 +289,16 @@ h5 {
 
 .container {
   @media screen and (min-width: 768px) {
-    min-width: 75vw;
+    max-width: 85vw;
+  }
+  @media screen and (min-width: 1024px) {
+    max-width: 75vw;
+  }
+  @media screen and (min-width: 1440px) {
+    max-width: 65vw;
+  }
+  @media screen and (min-width: 2560px) {
+    max-width: 55vw;
   }
 }
 

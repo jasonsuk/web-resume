@@ -36,7 +36,7 @@ const CertificateListPage = () => {
     }
   }, [dispatch, successCreate, successDelete, history, newCertificate]);
 
-  const createPostHandler = () => {
+  const createCertificate = () => {
     dispatch(createCertificate());
   };
 
@@ -55,7 +55,7 @@ const CertificateListPage = () => {
   ) : error ? (
     <Message variant='warning'>{error}</Message>
   ) : (
-    <Container>
+    <Container className='my-5'>
       <Row className='align-items-center'>
         <Col md={8}>
           <h2>List certificate</h2>
@@ -65,7 +65,7 @@ const CertificateListPage = () => {
             variant='dark'
             size='md'
             className='px-3'
-            onClick={() => createPostHandler()}
+            onClick={() => createCertificate()}
           >
             + Create certificate
           </Button>

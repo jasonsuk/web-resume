@@ -1,24 +1,49 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Container, Table, Button } from 'react-bootstrap';
+import { useNavigate } from 'react-router-dom';
+import { Container, Row, Col, Table, Button } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
 
 import Loader from '../components/Loader.js';
 import Message from '../components/Message.js';
 
-import { listPortfolios } from '../redux/actions/portfolioActions';
+import {
+  listPortfolios,
+  createPortfolio,
+  deletePortfolio,
+} from '../redux/actions/portfolioActions';
+
+import { PORTFOLIO_CREATE_RESET } from '../redux/constants/portfolioConstants.js';
 
 const PortfolioListPage = () => {
   const dispatch = useDispatch();
+  const history = useNavigate();
   const portfolioList = useSelector((state) => state.portfolioList);
   const { loading, error, portfolios } = portfolioList;
 
+  const portfolioCreate = useSelector((state) => state.portfolioCreate);
+  const { success: createSuccess, portfolio: newPortfolio } = portfolioCreate;
+
+  const portfolioDelete = useSelector((state) => state.portfolioDelete);
+  const { success: deleteSuccess } = portfolioDelete;
+
   useEffect(() => {
-    dispatch(listPortfolios());
-  }, [dispatch]);
+    if (createSuccess) {
+      history(`/admin/portfolio/${newPortfolio._id}/edit`);
+      dispatch({ type: PORTFOLIO_CREATE_RESET });
+    } else {
+      dispatch(listPortfolios());
+    }
+  }, [dispatch, history, newPortfolio, createSuccess, deleteSuccess]);
+
+  const createPortfolioHandler = () => {
+    dispatch(createPortfolio());
+  };
 
   const deletePortfolioHandler = (portfolioId) => {
-    console.log('Delete skill requested.');
+    if (window.confirm(`Deleting a portfolio ${portfolioId}. Are you sure?`)) {
+      dispatch(deletePortfolio(portfolioId));
+    }
   };
 
   return loading ? (
@@ -26,8 +51,22 @@ const PortfolioListPage = () => {
   ) : error ? (
     <Message variant='warning'>{error}</Message>
   ) : (
-    <Container>
-      <h2>List certificate</h2>
+    <Container className='my-5'>
+      <Row className='align-items-center'>
+        <Col md={8}>
+          <h2>List portfolios</h2>
+        </Col>
+        <Col style={{ textAlign: 'end' }}>
+          <Button
+            variant='dark'
+            size='md'
+            className='px-3'
+            onClick={() => createPortfolioHandler()}
+          >
+            + Create portfolio
+          </Button>
+        </Col>
+      </Row>
       <Table
         striped
         bordered

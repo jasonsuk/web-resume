@@ -2,6 +2,7 @@ import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Header from './components/Header.js';
 import Footer from './components/Footer.js';
+import Banner from './components/Banner.js';
 import HomePage from './pages/HomePage.js';
 import PortfolioPage from './pages/PortfolioPage.js';
 import PortfolioDetailPage from './pages/PortfolioDetailPage.js';
@@ -15,12 +16,13 @@ import CertificateEditPage from './pages/CertificateEditPage.js';
 import SkillListPage from './pages/SkillListPage.js';
 import SkillEditPage from './pages/SkillEditPage.js';
 import PortfolioListPage from './pages/PortfolioListPage.js';
+import PortfolioEditPage from './pages/PortfolioEditPage.js';
 
 const App = () => {
   return (
     <Router>
       <Header />
-      <main className='py-5'>
+      <main>
         {/* react-router-dom V6 Syntax */}
         <Routes>
           <Route path='/' element={<HomePage />} exact />
@@ -29,6 +31,7 @@ const App = () => {
           <Route path='/portfolio/:id' element={<PortfolioDetailPage />} />
           <Route path='/certificate' element={<CertificatePage />} />
           <Route path='/contact' element={<ContactPage />} />
+          {/* ADMIN - PROTECTED */}
           <Route path='/admin/certificate' element={<CertificateListPage />} />
           <Route
             path='/admin/certificate/:id/edit'
@@ -37,6 +40,10 @@ const App = () => {
           <Route path='/admin/skill' element={<SkillListPage />} />
           <Route path='/admin/skill/:id/edit' element={<SkillEditPage />} />
           <Route path='/admin/portfolio' element={<PortfolioListPage />} />
+          <Route
+            path='/admin/portfolio/:id/edit'
+            element={<PortfolioEditPage />}
+          />
         </Routes>
       </main>
       <Footer />

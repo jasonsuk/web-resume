@@ -34,7 +34,7 @@ const SkillListPage = () => {
     } else {
       dispatch(listSkills());
     }
-  }, [dispatch, successDelete]);
+  }, [dispatch, history, successCreate, successDelete, newSkill]);
 
   const createSkillHandler = () => {
     dispatch(createSkill());
@@ -51,7 +51,7 @@ const SkillListPage = () => {
   ) : error ? (
     <Message variant='warning'>{error}</Message>
   ) : (
-    <Container>
+    <Container className='my-5'>
       <Row className='align-items-center'>
         <Col md={8}>
           <h2>List Skills</h2>

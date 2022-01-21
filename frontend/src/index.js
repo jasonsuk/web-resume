@@ -4,7 +4,6 @@ import { Provider } from 'react-redux';
 import store from './redux/store.js';
 import './index.css';
 import './custom.scss';
-import 'react-bootstrap-range-slider/dist/react-bootstrap-range-slider.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
