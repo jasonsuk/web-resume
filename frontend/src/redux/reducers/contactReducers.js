@@ -7,6 +7,9 @@ import {
   CONTACT_ARCHIVE_SUCCESS,
   CONTACT_ARCHIVE_FAIL,
   CONTACT_ARCHIVE_RESET,
+  CONTACT_LIST_REQUEST,
+  CONTACT_LIST_SUCCESS,
+  CONTACT_LIST_FAIL,
 } from '../constants/contactConstants.js';
 
 export const contactMakeReducer = (state = {}, action) => {
@@ -34,6 +37,19 @@ export const contactArchiveReducer = (state = {}, action) => {
       return { loading: false, error: action.payload };
     case CONTACT_ARCHIVE_RESET:
       return {};
+    default:
+      return state;
+  }
+};
+
+export const contactListReducer = (state = { contacts: [] }, action) => {
+  switch (action.type) {
+    case CONTACT_LIST_REQUEST:
+      return { loading: true, ...state };
+    case CONTACT_LIST_SUCCESS:
+      return { loading: false, contacts: action.payload };
+    case CONTACT_LIST_FAIL:
+      return { loading: false, error: action.payload };
     default:
       return state;
   }

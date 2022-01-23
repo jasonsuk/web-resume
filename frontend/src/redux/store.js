@@ -31,6 +31,7 @@ import { userLoginReducer } from './reducers/userReducers.js';
 import {
   contactMakeReducer,
   contactArchiveReducer,
+  contactListReducer,
 } from './reducers/contactReducers.js';
 
 const reducer = combineReducers({
@@ -52,6 +53,7 @@ const reducer = combineReducers({
   userLogin: userLoginReducer,
   contactMake: contactMakeReducer,
   contactArchive: contactArchiveReducer,
+  contactList: contactListReducer,
 });
 
 const userInfoFromStorage = localStorage.getItem('userInfo')

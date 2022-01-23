@@ -16,6 +16,7 @@ import SkillListPage from './pages/SkillListPage.js';
 import SkillEditPage from './pages/SkillEditPage.js';
 import PortfolioListPage from './pages/PortfolioListPage.js';
 import PortfolioEditPage from './pages/PortfolioEditPage.js';
+import ContactListPage from './pages/ContactListPage.js';
 
 const App = () => {
   return (
@@ -43,6 +44,7 @@ const App = () => {
             path='/admin/portfolio/:id/edit'
             element={<PortfolioEditPage />}
           />
+          <Route path='/admin/contact' element={<ContactListPage />} />
         </Routes>
       </main>
       <Footer />

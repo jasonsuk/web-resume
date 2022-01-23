@@ -54,8 +54,8 @@ const Header = () => {
             </LinkContainer>
             {userInfo ? (
               <NavDropdown title={'Admin'} id={userInfo.name}>
-                <LinkContainer to='/admin/profile'>
-                  <NavDropdown.Item>Manage Profile</NavDropdown.Item>
+                <LinkContainer to='/admin/contact'>
+                  <NavDropdown.Item>Manage Contact</NavDropdown.Item>
                 </LinkContainer>
                 <LinkContainer to='/admin/portfolio'>
                   <NavDropdown.Item>Manage Portfolio</NavDropdown.Item>

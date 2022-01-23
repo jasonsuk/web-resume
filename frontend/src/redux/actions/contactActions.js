@@ -6,6 +6,9 @@ import {
   CONTACT_ARCHIVE_REQUEST,
   CONTACT_ARCHIVE_SUCCESS,
   CONTACT_ARCHIVE_FAIL,
+  CONTACT_LIST_REQUEST,
+  CONTACT_LIST_SUCCESS,
+  CONTACT_LIST_FAIL,
 } from '../constants/contactConstants.js';
 
 export const makeContact = (contact) => async (dispatch) => {
@@ -52,6 +55,34 @@ export const archiveContact = (contactId) => async (dispatch, getState) => {
   } catch (error) {
     dispatch({
       type: CONTACT_ARCHIVE_FAIL,
+      payload:
+        error.response && error.response.data.message
+          ? error.response.data.message
+          : error.message,
+    });
+  }
+};
+
+export const listContacts = () => async (dispatch, getState) => {
+  try {
+    dispatch({ type: CONTACT_LIST_REQUEST });
+
+    const {
+      userLogin: { userInfo },
+    } = getState();
+
+    const config = {
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${userInfo.token}`,
+      },
+    };
+
+    const { data } = await axios.get('/api/contacts', config);
+    dispatch({ type: CONTACT_LIST_SUCCESS, payload: data });
+  } catch (error) {
+    dispatch({
+      type: CONTACT_LIST_FAIL,
       payload:
         error.response && error.response.data.message
           ? error.response.data.message
