@@ -40,6 +40,7 @@ export const addPortfolio = asyncHandler(async (req, res) => {
     image: '',
     completedAt: Date.now(),
     isKeyPortfolio: false,
+    url: 'https://github.com/jasonsuk', // github main page as a default
   });
 
   const createdPortfolio = await newPortfolio.save();
@@ -55,8 +56,15 @@ export const updatePortfolio = asyncHandler(async (req, res) => {
   const portfolio = await Portfolio.findById(portfolioId);
 
   if (portfolio) {
-    const { name, summary, description, image, completedAt, isKeyPortfolio } =
-      req.body;
+    const {
+      name,
+      summary,
+      description,
+      image,
+      completedAt,
+      isKeyPortfolio,
+      url,
+    } = req.body;
 
     portfolio.name = name || portfolio.name;
     portfolio.summary = summary || portfolio.summary;
@@ -64,6 +72,7 @@ export const updatePortfolio = asyncHandler(async (req, res) => {
     portfolio.image = image || portfolio.image;
     portfolio.completedAt = completedAt || portfolio.completedAt;
     portfolio.isKeyPortfolio = isKeyPortfolio || portfolio.isKeyPortfolio;
+    portfolio.url = url || portfolio.url;
 
     const updatedPortfolio = await portfolio.save();
     res.status(200).json(updatedPortfolio);

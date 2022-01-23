@@ -2,10 +2,9 @@ import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Header from './components/Header.js';
 import Footer from './components/Footer.js';
-import Banner from './components/Banner.js';
 import HomePage from './pages/HomePage.js';
 import PortfolioPage from './pages/PortfolioPage.js';
-import PortfolioDetailPage from './pages/PortfolioDetailPage.js';
+// import PortfolioDetailPage from './pages/PortfolioDetailPage.js';
 import CertificatePage from './pages/CertificatePage.js';
 import ContactPage from './pages/ContactPage.js';
 import LoginPage from './pages/LoginPage.js';
@@ -28,7 +27,7 @@ const App = () => {
           <Route path='/' element={<HomePage />} exact />
           <Route path='/login' element={<LoginPage />} />
           <Route path='/portfolio' element={<PortfolioPage />} />
-          <Route path='/portfolio/:id' element={<PortfolioDetailPage />} />
+          {/* <Route path='/portfolio/:id' element={<PortfolioDetailPage />} /> */}
           <Route path='/certificate' element={<CertificatePage />} />
           <Route path='/contact' element={<ContactPage />} />
           {/* ADMIN - PROTECTED */}

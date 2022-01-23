@@ -33,7 +33,7 @@ const PortfolioPage = () => {
             />
             <Row>
               {portfolios.map((portfolio) => (
-                <Col md={3} key={portfolio._id}>
+                <Col md={4} key={portfolio._id}>
                   <PortfolioCard portfolio={portfolio} />
                 </Col>
               ))}

@@ -36,7 +36,7 @@ const CertificateListPage = () => {
     }
   }, [dispatch, successCreate, successDelete, history, newCertificate]);
 
-  const createCertificate = () => {
+  const createCertificateHandler = () => {
     dispatch(createCertificate());
   };
 
@@ -65,7 +65,7 @@ const CertificateListPage = () => {
             variant='dark'
             size='md'
             className='px-3'
-            onClick={() => createCertificate()}
+            onClick={() => createCertificateHandler()}
           >
             + Create certificate
           </Button>

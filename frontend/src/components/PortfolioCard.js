@@ -1,18 +1,17 @@
 import React from 'react';
 import { Card } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
 
 const PortfolioCard = ({ portfolio }) => {
   return (
     <>
       <Card className='mt-5'>
         {portfolio.image.length > 0 && (
-          <Link to={`/portfolio/${portfolio._id}`}>
-            <Card.Img src={portfolio.image} style={{ minHeight: '10rem' }} />
-          </Link>
+          <a href={portfolio.url} target='_blank' rel='noopener noreferrer'>
+            <Card.Img src={portfolio.image} />
+          </a>
         )}
         <Card.Body>
-          <Link to={`/portfolio/${portfolio._id}`}>
+          <a href={portfolio.url} target='_blank' rel='noopener noreferrer'>
             <Card.Title as='h3'>
               {portfolio.name.length > 50
                 ? portfolio.name.substring(0, 50) + '...'
@@ -23,7 +22,7 @@ const PortfolioCard = ({ portfolio }) => {
                 ? portfolio.summary.substring(0, 200) + '...'
                 : portfolio.summary}
             </Card.Text>
-          </Link>
+          </a>
         </Card.Body>
       </Card>
     </>

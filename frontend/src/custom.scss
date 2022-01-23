@@ -75,6 +75,15 @@ h5 {
 
 a {
   text-decoration: none;
+
+  &:link,
+  &:visited {
+    color: $dark;
+  }
+  &:hover,
+  &:active {
+    color: $secondary;
+  }
 }
 
 .nav-custom {
@@ -160,12 +169,14 @@ a {
 // SECTIONS
 // ====================
 
+// All pages
 .banner-box {
   height: 20vh;
   padding-top: 5rem;
   margin-bottom: 5rem;
 }
 
+// HomePage
 .home-background-image {
   opacity: 0.8;
   display: block;
@@ -207,32 +218,56 @@ a {
   font-weight: 300;
 }
 
-// CARD
-.card {
-  box-shadow: $default-box-shadow;
-  transition-duration: 3s;
-  transition: 1.5s;
-  text-decoration: none;
-
-  &-title {
-    min-height: 4.5rem;
-  }
-
-  &-text {
-    min-height: 5.5rem;
-  }
-
-  &-img {
-    max-height: 4rem;
-  }
-}
-
 // LIST GROUP
 .list-group {
   border-radius: 10px;
 
   & > * {
     margin-top: 0.4rem;
+  }
+}
+
+// PortfolioPage
+.card {
+  box-shadow: $default-box-shadow;
+  transition-duration: 3s;
+  transition: 1.5s;
+  text-decoration: none;
+
+  &-img {
+    @media screen and (min-width: 768px) {
+      height: 8rem;
+    }
+    @media screen and (min-width: 1024px) {
+      height: 10rem;
+    }
+    @media screen and (min-width: 1440px) {
+      height: 16rem;
+    }
+    @media screen and (min-width: 2560px) {
+      height: 22rem;
+    }
+  }
+
+  &-body {
+    @media screen and (min-width: 768px) {
+      min-height: 10rem;
+    }
+    @media screen and (min-width: 1024px) {
+      min-height: 12rem;
+    }
+    @media screen and (min-width: 1440px) {
+      min-height: 18rem;
+    }
+    @media screen and (min-width: 2560px) {
+      min-height: 26rem;
+    }
+  }
+
+  &-title {
+  }
+
+  &-text {
   }
 }
 

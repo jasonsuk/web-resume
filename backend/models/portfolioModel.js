@@ -24,6 +24,12 @@ const portfolioSchema = mongoose.Schema(
       type: Boolean,
       default: false,
     },
+    url: {
+      type: String,
+      trim: true,
+      required: [true, 'Write the url link to the portfolio.'],
+    },
+
     // user: {
     //   type: mongoose.Schema.Types.ObjectId,
     //   ref: 'User',
