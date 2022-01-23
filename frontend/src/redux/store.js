@@ -28,6 +28,11 @@ import {
 
 import { userLoginReducer } from './reducers/userReducers.js';
 
+import {
+  contactMakeReducer,
+  contactArchiveReducer,
+} from './reducers/contactReducers.js';
+
 const reducer = combineReducers({
   portfolioList: portfolioListReducer,
   portfolioDetail: portfolioDetailReducer,
@@ -45,6 +50,8 @@ const reducer = combineReducers({
   skillUpdate: skillUpdateReducer,
   skillDelete: skillDeleteReducer,
   userLogin: userLoginReducer,
+  contactMake: contactMakeReducer,
+  contactArchive: contactArchiveReducer,
 });
 
 const userInfoFromStorage = localStorage.getItem('userInfo')

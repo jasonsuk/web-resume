@@ -13,12 +13,12 @@ $danger: #f17a89;
 @import '../node_modules/bootstrap/scss/variables';
 @import url('https://fonts.googleapis.com/css2?family=Dongle:wght@300;400;700&display=swap');
 
-$custom-font-size-default: 1.6rem;
+$custom-font-size-default: 1.8rem;
 $custom-font-size-xl: 6rem;
-$custom-font-size-lg: 3.6rem;
+$custom-font-size-lg: 4rem;
 $custom-font-size-md: 2.4rem;
-$custom-font-size-sm: 1.2rem;
-$custom-font-size-xs: 0.8rem;
+$custom-font-size-sm: 1.4rem;
+$custom-font-size-xs: 1rem;
 
 $default-box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
 
@@ -121,13 +121,22 @@ a {
 // HOMEPAGE: SECTIONS
 // ====================
 
-.home-contact-links {
+.home-section-contact {
   display: grid;
   justify-content: center;
   align-items: center;
   text-align: center;
   position: fixed;
   left: 3.6rem;
+
+  & > * {
+    transition-duration: 3s;
+    transition: 1.5s;
+
+    &:hover {
+      transform: translateY(-5px);
+    }
+  }
 
   @media screen and (max-width: 768px) {
     display: none;
@@ -234,6 +243,10 @@ a {
   transition: 1.5s;
   text-decoration: none;
 
+  &:hover {
+    transform: translateY(-5px);
+  }
+
   &-img {
     @media screen and (min-width: 768px) {
       height: 8rem;
@@ -262,12 +275,6 @@ a {
     @media screen and (min-width: 2560px) {
       min-height: 26rem;
     }
-  }
-
-  &-title {
-  }
-
-  &-text {
   }
 }
 

@@ -6,7 +6,7 @@ const contactSchema = mongoose.Schema(
       type: String,
       trim: true,
       lowercase: true,
-      required: [true, 'Please enter your name.'],
+      required: [true, 'May I know your name?'],
     },
     email: {
       type: String,
@@ -19,15 +19,15 @@ const contactSchema = mongoose.Schema(
         },
         message: 'Please enter a valid email.',
       },
-      required: [true, 'Please enter your email address.'],
+      required: [true, 'Email address is required.'],
     },
     message: {
       type: String,
       trim: true,
       lowercase: true,
-      required: [true, 'Please write a short message.'],
+      required: false,
     },
-    isResponded: {
+    archived: {
       type: Boolean,
       default: false,
     },

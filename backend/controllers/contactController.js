@@ -1,4 +1,4 @@
-import e from 'express';
+import express from 'express';
 import asyncHandler from 'express-async-handler';
 import Contact from '../models/contactModel.js';
 
@@ -18,19 +18,18 @@ export const getContacts = asyncHandler(async (req, res) => {
 export const makeContact = asyncHandler(async (req, res) => {
   const { name, email, message } = req.body;
 
-  if (email && email.length == 0) {
+  if (email && email.length > 0) {
+    const contact = new Contact();
+    contact.name = name;
+    contact.email = email;
+    contact.message = message;
+
+    const createdContact = await contact.save();
+    res.status(201).json(createdContact);
+  } else {
     res.status(400);
     throw new Error('No email address found.');
   }
-
-  const contact = await new Contact({
-    name,
-    email,
-    message,
-  });
-
-  const createdContact = await contact.save();
-  res.status(200).json(createdContact);
 });
 
 // DESC: Delete a contact (housekeeping purpose)
@@ -48,6 +47,27 @@ export const deleteContact = asyncHandler(async (req, res) => {
     });
   } else {
     res.status(400);
-    throw new Error(`portfolio ${portfolioId} not found.`);
+    throw new Error(`Portfolio ${portfolioId} not found.`);
+  }
+});
+
+// DESC: Archive a contact
+// ROUTE: PATCH /api/contacts/:id
+// ACCESS: Private
+
+export const archiveContact = asyncHandler(async (req, res) => {
+  const contactId = req.params.id;
+  const contact = await Contact.findById(contactId);
+
+  if (contact) {
+    contact.archived = true;
+    await contact.save();
+
+    res.json({
+      message: `Successfully archived the contact ${contactId}`,
+    });
+  } else {
+    res.status(400);
+    throw new Error(`Portfolio ${portfolioId} not found.`);
   }
 });
