@@ -9,6 +9,9 @@ import {
   CONTACT_LIST_REQUEST,
   CONTACT_LIST_SUCCESS,
   CONTACT_LIST_FAIL,
+  CONTACT_DELETE_REQUEST,
+  CONTACT_DELETE_SUCCESS,
+  CONTACT_DELETE_FAIL,
 } from '../constants/contactConstants.js';
 
 export const makeContact = (contact) => async (dispatch) => {
@@ -83,6 +86,35 @@ export const listContacts = () => async (dispatch, getState) => {
   } catch (error) {
     dispatch({
       type: CONTACT_LIST_FAIL,
+      payload:
+        error.response && error.response.data.message
+          ? error.response.data.message
+          : error.message,
+    });
+  }
+};
+
+export const deleteContact = (contactId) => async (dispatch, getState) => {
+  try {
+    dispatch({ type: CONTACT_DELETE_REQUEST });
+
+    const {
+      userLogin: { userInfo },
+    } = getState();
+
+    const config = {
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${userInfo.token}`,
+      },
+    };
+
+    await axios.delete(`/api/contacts/${contactId}`, config);
+
+    dispatch({ type: CONTACT_DELETE_SUCCESS });
+  } catch (error) {
+    dispatch({
+      type: CONTACT_DELETE_FAIL,
       payload:
         error.response && error.response.data.message
           ? error.response.data.message

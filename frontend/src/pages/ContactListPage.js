@@ -9,6 +9,7 @@ import Message from '../components/Message.js';
 import {
   listContacts,
   archiveContact,
+  deleteContact,
 } from '../redux/actions/contactActions.js';
 
 import { CONTACT_ARCHIVE_RESET } from '../redux/constants/contactConstants.js';
@@ -21,7 +22,18 @@ const PortfolioListPage = () => {
   const { loading, error, contacts } = contactList;
 
   const contactArchive = useSelector((state) => state.contactArchive);
-  const { success: successArchive } = contactArchive;
+  const {
+    success: successArchive,
+    loading: loadingArchive,
+    error: errorArchive,
+  } = contactArchive;
+
+  const contactDelete = useSelector((state) => state.contactDelete);
+  const {
+    success: successDelete,
+    loading: loadingDelete,
+    error: errorDelete,
+  } = contactDelete;
 
   useEffect(() => {
     if (successArchive) {
@@ -29,11 +41,17 @@ const PortfolioListPage = () => {
     } else {
       dispatch(listContacts());
     }
-  }, [dispatch, history, successArchive]);
+  }, [dispatch, history, successArchive, successDelete]);
 
   const archiveContactHandler = (contactId) => {
     if (window.confirm(`Archiving a contact ${contactId}. Are you sure?`)) {
       dispatch(archiveContact(contactId));
+    }
+  };
+
+  const deleteContactHandler = (contactId) => {
+    if (window.confirm(`Deleting a contact ${contactId}. Are you sure?`)) {
+      dispatch(deleteContact(contactId));
     }
   };
 
@@ -63,6 +81,7 @@ const PortfolioListPage = () => {
             <th>Message</th>
             <th>Contact sender</th>
             <th>Archive</th>
+            <th>Delete</th>
           </tr>
         </thead>
         <tbody>
@@ -86,11 +105,29 @@ const PortfolioListPage = () => {
                   </a>
                 </td>
                 <td>
+                  {loadingArchive && <Loader />}
+                  {errorArchive && (
+                    <Message varian='warning'>{errorArchive}</Message>
+                  )}
                   <Button
                     className='btn-icon'
                     variant='secondary'
                     size='md'
                     onClick={() => archiveContactHandler(contact._id)}
+                  >
+                    <i className='far fa-folder-open'></i>
+                  </Button>
+                </td>
+                <td>
+                  {loadingDelete && <Loader />}
+                  {errorDelete && (
+                    <Message varian='warning'>{errorDelete}</Message>
+                  )}
+                  <Button
+                    className='btn-icon'
+                    variant='danger'
+                    size='md'
+                    onClick={() => deleteContactHandler(contact._id)}
                   >
                     <i className='far fa-folder-open'></i>
                   </Button>

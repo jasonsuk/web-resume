@@ -32,6 +32,7 @@ import {
   contactMakeReducer,
   contactArchiveReducer,
   contactListReducer,
+  contactDeleteReducer,
 } from './reducers/contactReducers.js';
 
 const reducer = combineReducers({
@@ -54,6 +55,7 @@ const reducer = combineReducers({
   contactMake: contactMakeReducer,
   contactArchive: contactArchiveReducer,
   contactList: contactListReducer,
+  contactDelete: contactDeleteReducer,
 });
 
 const userInfoFromStorage = localStorage.getItem('userInfo')
