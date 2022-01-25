@@ -24,7 +24,7 @@ const HomeSectionPortfolio = ({ portfolios }) => {
                 </Col>
               ))}
           </Row>
-          <LinkContainer to='/portfolio' className='d-grid gap-2 mt-3'>
+          <LinkContainer to='/portfolio' className='d-grid gap-2 mt-5'>
             <Button variant='dark' className='text-light'>
               See all {portfolios.length} portfolios
             </Button>

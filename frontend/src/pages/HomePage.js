@@ -6,6 +6,7 @@ import HomeSectionContact from '../components/HomeSectionContact.js';
 import HomeSectionIntro from '../components/HomeSectionIntro.js';
 import HomeSectionPortfolio from '../components/HomeSectionPortfolio.js';
 import HomeSectionSkill from '../components/HomeSectionSkill.js';
+import HomeSectionCertificate from '../components/HomeSectionCertificate.js';
 import Loader from '../components/Loader.js';
 import Message from '../components/Message.js';
 
@@ -27,7 +28,11 @@ const HomePage = () => {
   const { loading: loadingSkill, error: errorSkill, skills } = skillList;
 
   const certificateList = useSelector((state) => state.certificateList);
-  const { certificates } = certificateList;
+  const {
+    loading: loadingCertificate,
+    error: errorCertificate,
+    certificates,
+  } = certificateList;
 
   const statistics = {
     countPortfolios: portfolios.length,
@@ -61,6 +66,16 @@ const HomePage = () => {
             <Message>{errorPortfolio}</Message>
           ) : (
             <HomeSectionPortfolio portfolios={portfolios} />
+          )}
+          {/* ========================
+          CERTIFICATE SECTION
+          ============================ */}
+          {loadingCertificate ? (
+            <Loader />
+          ) : errorCertificate ? (
+            <Message>{errorCertificate}</Message>
+          ) : (
+            <HomeSectionCertificate certificates={certificates} />
           )}
 
           {/* ========================

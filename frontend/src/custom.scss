@@ -1,12 +1,13 @@
 // Overwirte default variables
 $primary: #6d3e5d; //cosmic
-$secondary: #c86966; // contessa
+$secondary: #e7717d; // contessa
 $dark: #29282b;
-$light: #e6e7e1;
-$success: #0fa;
-$info: #555;
+$light: #f2f2f2;
+$success: #afd275;
+$info: #a8d0e6;
 $warning: #e4b123;
 $danger: #f17a89;
+$white: #fff;
 
 // Import bootstrap styles at the bottom
 @import '../node_modules/bootstrap/scss/bootstrap';
@@ -35,6 +36,7 @@ $default-box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
 *::after {
   margin: 0;
   padding: 0;
+  cursor: pointer;
 }
 
 body {
@@ -82,7 +84,7 @@ a {
   }
   &:hover,
   &:active {
-    color: $secondary;
+    color: $light;
   }
 }
 
@@ -93,6 +95,19 @@ a {
   &-brand {
     font-size: $custom-font-size-lg;
   }
+}
+
+.nav-link {
+  color: $dark;
+
+  &:hover {
+    color: $white;
+  }
+}
+
+.nav-pills .nav-link.active {
+  background-color: $white;
+  color: $dark;
 }
 
 .form-control {
@@ -147,7 +162,7 @@ a {
   padding: 4.8rem 1.2rem;
 
   &-intro {
-    background: #fff;
+    background: $white;
   }
   &-background {
     background: $dark;
@@ -155,6 +170,9 @@ a {
   }
   &-portfolio {
     background: $warning;
+  }
+  &-certificate {
+    background: $success;
   }
   &-skill {
     background: $light;
@@ -212,7 +230,7 @@ a {
 
 .home-background-textbox {
   padding: 1.6rem;
-  border: 1px solid #fff;
+  border: 1px solid $white;
   border-radius: 8px;
   color: $light;
   background-color: $dark;
@@ -226,33 +244,11 @@ a {
   }
 }
 
-// ====================
-// ELEMENTS
-// ==================
-
-.heading-style2-primary {
-  font-size: $custom-font-size-lg;
-}
-
-.heading-style2-text {
-  font-size: $custom-font-size-default;
-  font-weight: 300;
-}
-
-// LIST GROUP
-.list-group {
-  border-radius: 10px;
-
-  & > * {
-    margin-top: 0.4rem;
-  }
-}
-
 // PortfolioPage
 .card {
   box-shadow: $default-box-shadow;
-  transition-duration: 3s;
-  transition: 1.5s;
+  transition-duration: 2s;
+  transition: 1s;
   text-decoration: none;
 
   &:hover {
@@ -292,11 +288,36 @@ a {
 
 .list-group-item {
   border-radius: 10px;
-  transition-duration: 1s;
-  transition: 1.5s;
+  transition-duration: 2s;
+  transition: 0.5s;
+  font-weight: 300;
 
   &:hover {
-    transform: translateX(-5px);
+    transform: scale(1.05);
+    background-color: $light;
+  }
+}
+
+// ====================
+// ELEMENTS
+// ==================
+
+// ALL
+.heading-style2-primary {
+  font-size: $custom-font-size-lg;
+}
+
+.heading-style2-text {
+  font-size: $custom-font-size-default;
+  font-weight: 300;
+}
+
+// LIST GROUP
+.list-group {
+  border-radius: 10px;
+
+  & > * {
+    margin-top: 0.4rem;
   }
 }
 

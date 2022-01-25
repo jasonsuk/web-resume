@@ -16,7 +16,7 @@ const HomeSectionSkill = ({ skills }) => {
           <h3>Skills</h3>
           <h2 style={{ marginTop: '-1.6rem' }}>HOW I DO</h2>
           <Row className='mt-5'>
-            <Col md={6}>
+            <Col lg={6}>
               <h4 className='text-center'>Programming</h4>
               <ListGroup variant='flush' className='my-3'>
                 {skills
@@ -33,7 +33,7 @@ const HomeSectionSkill = ({ skills }) => {
                   ))}
               </ListGroup>
             </Col>
-            <Col md={6}>
+            <Col lg={6}>
               <h4 className='text-center'>Data analytics</h4>
               <ListGroup variant='flush' className='my-3'>
                 {skills
@@ -52,7 +52,7 @@ const HomeSectionSkill = ({ skills }) => {
             </Col>
           </Row>
           <Row className='mt-3'>
-            <Col md={6}>
+            <Col lg={6}>
               <h4 className='text-center'>Business expertise</h4>
               <ListGroup variant='flush' className='my-3'>
                 {skills
@@ -66,7 +66,7 @@ const HomeSectionSkill = ({ skills }) => {
                   ))}
               </ListGroup>
             </Col>
-            <Col md={6}>
+            <Col lg={6}>
               <h4 className='text-center'>General</h4>
               <ListGroup variant='flush' className='my-3'>
                 {skills
