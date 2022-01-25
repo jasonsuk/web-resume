@@ -96,7 +96,7 @@ const CertificateListPage = () => {
           {certificates.map((certificate) => (
             <tr key={certificate._id}>
               <td>{certificate._id}</td>
-              <td>{certificate.completedAt}</td>
+              <td>{certificate.completedAt.substring(0, 10)}</td>
               <td>{certificate.name}</td>
               <td>{certificate.organization}</td>
               <td>{String(certificate.isKeyCertificate)}</td>

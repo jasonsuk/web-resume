@@ -38,8 +38,11 @@ const HomeSectionIntro = ({ statistics }) => {
               </p>
               <p>
                 I strive to grow my expertise in programming and data science
-                because these help me problem solve things that I am curious
-                about.
+                because these help me solve business decision marking problems.
+              </p>
+              <p>
+                In addition, I taught myself software engineering skills from
+                front to back, and it is how to manage to build this website!
               </p>
             </Col>
           </Row>

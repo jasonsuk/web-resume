@@ -6,7 +6,7 @@ import Certificate from '../models/certificateModel.js';
 // ACCESS: Public
 
 export const getCertificates = asyncHandler(async (req, res) => {
-  const certificates = await Certificate.find({}).sort({ createdAt: -1 });
+  const certificates = await Certificate.find({}).sort({ completedAt: -1 });
   res.status(200).json(certificates);
 });
 

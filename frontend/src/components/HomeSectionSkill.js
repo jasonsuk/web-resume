@@ -5,7 +5,7 @@ const HomeSectionSkill = ({ skills }) => {
   const badgeStyle = {
     position: 'absolute',
     right: '0.5rem',
-    width: '6rem',
+    minWidth: '6.5rem',
     textAlign: 'center',
   };
 
@@ -18,7 +18,7 @@ const HomeSectionSkill = ({ skills }) => {
           <Row className='mt-5'>
             <Col md={6}>
               <h4 className='text-center'>Programming</h4>
-              <ListGroup variant='flush'>
+              <ListGroup variant='flush' className='my-3'>
                 {skills
                   .filter((skill) => skill.category === 'programming')
                   .sort((a, b) => b.score - a.score)
@@ -35,7 +35,7 @@ const HomeSectionSkill = ({ skills }) => {
             </Col>
             <Col md={6}>
               <h4 className='text-center'>Data analytics</h4>
-              <ListGroup variant='flush'>
+              <ListGroup variant='flush' className='my-3'>
                 {skills
                   .filter((skill) => skill.category === 'analytics')
                   .sort((a, b) => b.score - a.score)
@@ -54,7 +54,7 @@ const HomeSectionSkill = ({ skills }) => {
           <Row className='mt-3'>
             <Col md={6}>
               <h4 className='text-center'>Business expertise</h4>
-              <ListGroup variant='flush'>
+              <ListGroup variant='flush' className='my-3'>
                 {skills
                   .filter((skill) => skill.category === 'business')
                   .sort((a, b) => b.score - a.score)
@@ -68,7 +68,7 @@ const HomeSectionSkill = ({ skills }) => {
             </Col>
             <Col md={6}>
               <h4 className='text-center'>General</h4>
-              <ListGroup variant='flush'>
+              <ListGroup variant='flush' className='my-3'>
                 {skills
                   .filter((skill) => skill.category === 'general')
                   .sort((a, b) => b.score - a.score)

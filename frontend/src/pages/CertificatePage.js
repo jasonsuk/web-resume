@@ -47,16 +47,14 @@ const CertificatePage = () => {
                 )} */}
                   </Accordion.Header>
                   <Accordion.Body>
-                    <ListGroup>
-                      <ListGroup.Item className='fw-bold'>
-                        {certificate.summary}
-                      </ListGroup.Item>
+                    <ListGroup variant='flush'>
+                      <ListGroup.Item>{certificate.summary}</ListGroup.Item>
                       <ListGroup.Item>
-                        <span className='fw-bold'>Organization: </span>
+                        <span>Organization: </span>
                         {certificate.organization}
                       </ListGroup.Item>
                       <ListGroup.Item>
-                        <span className='fw-bold'>Completed at: </span>
+                        <span>Completed at: </span>
                         {certificate.completedAt.substring(0, 10)}
                       </ListGroup.Item>
                     </ListGroup>
