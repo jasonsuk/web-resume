@@ -11,20 +11,20 @@ import {
 } from './reducers/portfolioReducers.js';
 
 import {
-  certificateListReducer,
-  certificateDetailReducer,
-  certificateCreateReducer,
-  certificateUpdateReducer,
-  certificateDeleteReducer,
-} from './reducers/certificateReducers.js';
-
-import {
   blogListReducer,
   blogDetailReducer,
   blogCreateReducer,
   blogUpdateReducer,
   blogDeleteReducer,
 } from './reducers/blogReducers.js';
+
+import {
+  certificateListReducer,
+  certificateDetailReducer,
+  certificateCreateReducer,
+  certificateUpdateReducer,
+  certificateDeleteReducer,
+} from './reducers/certificateReducers.js';
 
 import {
   skillListReducer,

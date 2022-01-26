@@ -5,7 +5,7 @@ import Footer from './components/Footer.js';
 import HomePage from './pages/HomePage.js';
 import PortfolioPage from './pages/PortfolioPage.js';
 import BlogPage from './pages/BlogPage.js';
-// import BlogDetailPage from './pages/BlogDetailPage.js';
+import BlogDetailPage from './pages/BlogDetailPage.js';
 import CertificatePage from './pages/CertificatePage.js';
 import ContactPage from './pages/ContactPage.js';
 import LoginPage from './pages/LoginPage.js';
@@ -18,6 +18,8 @@ import SkillEditPage from './pages/SkillEditPage.js';
 import PortfolioListPage from './pages/PortfolioListPage.js';
 import PortfolioEditPage from './pages/PortfolioEditPage.js';
 import ContactListPage from './pages/ContactListPage.js';
+import BlogListPage from './pages/BlogListPage.js';
+import BlogEditPage from './pages/BlogEditPage.js';
 
 const App = () => {
   return (
@@ -30,7 +32,7 @@ const App = () => {
           <Route path='/login' element={<LoginPage />} />
           <Route path='/portfolio' element={<PortfolioPage />} />
           <Route path='/blog' element={<BlogPage />} />
-          {/* <Route path='/blog/:id' element={<BlogDetailPage />} /> */}
+          <Route path='/blog/:id' element={<BlogDetailPage />} />
           <Route path='/certificate' element={<CertificatePage />} />
           <Route path='/contact' element={<ContactPage />} />
           {/* ADMIN - PROTECTED */}
@@ -46,6 +48,8 @@ const App = () => {
             path='/admin/portfolio/:id/edit'
             element={<PortfolioEditPage />}
           />
+          <Route path='/admin/blog' element={<BlogListPage />} />
+          <Route path='/admin/blog/:id/edit' element={<BlogEditPage />} />
           <Route path='/admin/contact' element={<ContactListPage />} />
         </Routes>
       </main>

@@ -1,4 +1,5 @@
 import React from 'react';
+import { LinkContainer } from 'react-router-bootstrap';
 import { Card } from 'react-bootstrap';
 
 const BlogCard = ({ blog }) => {
@@ -6,9 +7,9 @@ const BlogCard = ({ blog }) => {
     <>
       <Card className='card-blog'>
         {blog.image.length > 0 && (
-          <a href={blog.url} target='_blank' rel='noopener noreferrer'>
+          <LinkContainer to={blog._id}>
             <Card.Img src={blog.image} />
-          </a>
+          </LinkContainer>
         )}
         <Card.Body>
           <Card.Title as='h4'>

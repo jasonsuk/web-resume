@@ -50,13 +50,13 @@ export const updateBlog = asyncHandler(async (req, res) => {
   const blog = await Blog.findById(blogId);
 
   if (blog) {
-    const { title, subtitle, body } = req.body;
+    const { title, subtitle, body, image, url } = req.body;
 
     blog.title = title || blog.title;
     blog.subtitle = subtitle || blog.subtitle;
     blog.body = body || blog.body;
-    blog.image = blog.image;
-    blog.url = blog.url;
+    blog.image = image || blog.image;
+    blog.url = url || blog.url;
 
     const updatedBlog = await blog.save();
     res.status(200).json(updatedBlog);
