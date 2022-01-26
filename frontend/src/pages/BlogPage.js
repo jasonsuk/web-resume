@@ -2,20 +2,20 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Container, Row, Col } from 'react-bootstrap';
 import Banner from '../components/Banner.js';
-import PortfolioCard from '../components/PortfolioCard.js';
+import BlogCard from '../components/BlogCard.js';
 import Loader from '../components/Loader.js';
 import Message from '../components/Message.js';
 
-import { listPortfolios } from '../redux/actions/portfolioActions.js';
+import { listBlogs } from '../redux/actions/blogActions.js';
 
-const PortfolioPage = () => {
+const BlogPage = () => {
   const dispatch = useDispatch();
 
-  const portfolioList = useSelector((state) => state.portfolioList);
-  const { loading, error, portfolios } = portfolioList;
+  const blogList = useSelector((state) => state.blogList);
+  const { loading, error, blogs } = blogList;
 
   useEffect(() => {
-    dispatch(listPortfolios());
+    dispatch(listBlogs());
   }, [dispatch]);
 
   return (
@@ -28,13 +28,13 @@ const PortfolioPage = () => {
         <section>
           <Container>
             <Banner
-              subject=' Portfolio'
-              body='Showcasing my data analytics and machine learning works'
+              subject='Blog'
+              body='Collecting daily commits to business topics, programming and analysis.'
             />
             <Row>
-              {portfolios.map((portfolio) => (
-                <Col md={6} lg={4} key={portfolio._id}>
-                  <PortfolioCard portfolio={portfolio} />
+              {blogs.map((blog) => (
+                <Col md={4} lg={3} key={blog._id}>
+                  <BlogCard blog={blog} />
                 </Col>
               ))}
             </Row>
@@ -45,4 +45,4 @@ const PortfolioPage = () => {
   );
 };
 
-export default PortfolioPage;
+export default BlogPage;

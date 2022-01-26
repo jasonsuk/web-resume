@@ -19,6 +19,14 @@ import {
 } from './reducers/certificateReducers.js';
 
 import {
+  blogListReducer,
+  blogDetailReducer,
+  blogCreateReducer,
+  blogUpdateReducer,
+  blogDeleteReducer,
+} from './reducers/blogReducers.js';
+
+import {
   skillListReducer,
   skillDetailReducer,
   skillCreateReducer,
@@ -41,6 +49,11 @@ const reducer = combineReducers({
   portfolioCreate: portfolioCreateReducer,
   portfolioUpdate: portfolioUpdateReducer,
   portfolioDelete: portfolioDeleteReducer,
+  blogList: blogListReducer,
+  blogDetail: blogDetailReducer,
+  blogCreate: blogCreateReducer,
+  blogUpdate: blogUpdateReducer,
+  blogDelete: blogDeleteReducer,
   certificateList: certificateListReducer,
   certificateDetail: certificateDetailReducer,
   certificateCreate: certificateCreateReducer,

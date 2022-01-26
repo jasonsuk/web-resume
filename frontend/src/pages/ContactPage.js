@@ -23,11 +23,11 @@ const ContactPage = () => {
   useEffect(() => {
     if (success) {
       setSent(true);
+      setTimeout(() => {
+        history('/contact');
+        reset();
+      }, 3000);
     }
-    setTimeout(() => {
-      history('/contact');
-      reset();
-    }, 3000);
   }, [success, history]);
 
   const reset = () => {

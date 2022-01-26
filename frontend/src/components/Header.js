@@ -37,11 +37,11 @@ const Header = () => {
                 <i className='fas fa-briefcase'></i> Portfolios
               </Nav.Link>
             </LinkContainer>
-            {/* <LinkContainer to='/blogs'>
-                <Nav.Link>
-                  <i className='fas fa-feather'></i> Blogs
-                </Nav.Link>
-              </LinkContainer> */}
+            <LinkContainer to='/blog'>
+              <Nav.Link>
+                <i className='fas fa-feather'></i> Blogs
+              </Nav.Link>
+            </LinkContainer>
             <LinkContainer to='/certificate'>
               <Nav.Link>
                 <i className='fas fa-school'></i> Certificate

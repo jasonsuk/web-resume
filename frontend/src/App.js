@@ -4,7 +4,8 @@ import Header from './components/Header.js';
 import Footer from './components/Footer.js';
 import HomePage from './pages/HomePage.js';
 import PortfolioPage from './pages/PortfolioPage.js';
-// import PortfolioDetailPage from './pages/PortfolioDetailPage.js';
+import BlogPage from './pages/BlogPage.js';
+// import BlogDetailPage from './pages/BlogDetailPage.js';
 import CertificatePage from './pages/CertificatePage.js';
 import ContactPage from './pages/ContactPage.js';
 import LoginPage from './pages/LoginPage.js';
@@ -28,7 +29,8 @@ const App = () => {
           <Route path='/' element={<HomePage />} exact />
           <Route path='/login' element={<LoginPage />} />
           <Route path='/portfolio' element={<PortfolioPage />} />
-          {/* <Route path='/portfolio/:id' element={<PortfolioDetailPage />} /> */}
+          <Route path='/blog' element={<BlogPage />} />
+          {/* <Route path='/blog/:id' element={<BlogDetailPage />} /> */}
           <Route path='/certificate' element={<CertificatePage />} />
           <Route path='/contact' element={<ContactPage />} />
           {/* ADMIN - PROTECTED */}

@@ -6,6 +6,7 @@ import morgan from 'morgan';
 
 import connectDB from './config/database.js';
 import PortfolioRouter from './routers/portfolioRouter.js';
+import BlogRouter from './routers/blogRouter.js';
 import CertificateRouter from './routers/certificateRouter.js';
 import SkillRouter from './routers/skillRouter.js';
 import ContactRouter from './routers/contactRouter.js';
@@ -32,6 +33,7 @@ if (process.env.NODE_ENV == 'development') {
 }
 
 app.use('/api/portfolios', PortfolioRouter);
+app.use('/api/blogs', BlogRouter);
 app.use('/api/certificates', CertificateRouter);
 app.use('/api/skills', SkillRouter);
 app.use('/api/contacts', ContactRouter);

@@ -14,11 +14,13 @@ $white: #fff;
 @import '../node_modules/bootstrap/scss/variables';
 @import url('https://fonts.googleapis.com/css2?family=Dongle:wght@300;400;700&display=swap');
 
-$custom-font-size-default: 1.8rem;
-$custom-font-size-xl: 6rem;
-$custom-font-size-lg: 4rem;
-$custom-font-size-md: 2.4rem;
-$custom-font-size-sm: 1.4rem;
+$custom-font-size-default: 1.6rem;
+$custom-font-size-xxl: 6rem;
+$custom-font-size-xl: 4.8rem;
+$custom-font-size-lg: 3.6rem;
+$custom-font-size-mdl: 2.4rem;
+$custom-font-size-mds: 1.8rem;
+$custom-font-size-sm: 1.2rem;
 $custom-font-size-xs: 1rem;
 
 $default-box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
@@ -63,14 +65,20 @@ h2 {
   font-weight: 700;
 }
 h3 {
-  font-size: $custom-font-size-md;
+  font-size: $custom-font-size-mdl;
   font-weight: 500;
 }
 h4 {
-  font-size: $custom-font-size-default;
+  font-size: $custom-font-size-mds;
   font-weight: 500;
 }
+
 h5 {
+  font-size: $custom-font-size-default;
+  font-weight: 300;
+}
+
+p {
   font-size: $custom-font-size-sm;
   font-weight: 300;
 }
@@ -84,7 +92,7 @@ a {
   }
   &:hover,
   &:active {
-    color: $light;
+    color: $primary;
   }
 }
 
@@ -245,7 +253,7 @@ a {
 }
 
 // PortfolioPage
-.card {
+.card .card-portfolio {
   box-shadow: $default-box-shadow;
   transition-duration: 2s;
   transition: 1s;
@@ -257,31 +265,67 @@ a {
 
   &-img {
     @media screen and (min-width: 768px) {
-      height: 8rem;
-    }
-    @media screen and (min-width: 1024px) {
-      height: 10rem;
-    }
-    @media screen and (min-width: 1440px) {
-      height: 16rem;
-    }
-    @media screen and (min-width: 2560px) {
-      height: 22rem;
-    }
-  }
-
-  &-body {
-    @media screen and (min-width: 768px) {
       min-height: 10rem;
     }
     @media screen and (min-width: 1024px) {
-      min-height: 12rem;
+      min-height: 14rem;
     }
     @media screen and (min-width: 1440px) {
       min-height: 18rem;
     }
     @media screen and (min-width: 2560px) {
-      min-height: 26rem;
+      min-height: 22rem;
+    }
+  }
+
+  &-body {
+    @media screen and (min-width: 768px) {
+      min-height: 20rem;
+    }
+    @media screen and (min-width: 1024px) {
+      min-height: 16rem;
+    }
+    // @media screen and (min-width: 1440px) {
+    //   min-height: 16rem;
+    // }
+    @media screen and (min-width: 2560px) {
+      min-height: 12rem;
+    }
+  }
+}
+
+// BlogPage
+.card .card-blog {
+  box-shadow: $default-box-shadow;
+  transition-duration: 2s;
+  transition: 1s;
+  text-decoration: none;
+
+  &:hover {
+    transform: translateY(-5px);
+  }
+
+  &-img {
+    @media screen and (min-width: 1024px) {
+      min-height: 6rem;
+    }
+    @media screen and (min-width: 1440px) {
+      min-height: 10rem;
+    }
+    @media screen and (min-width: 2560px) {
+      min-height: 14rem;
+    }
+  }
+
+  &-body {
+    @media screen and (min-width: 1024px) {
+      min-height: 12rem;
+    }
+    @media screen and (min-width: 1440px) {
+      min-height: 16rem;
+    }
+    @media screen and (min-width: 2560px) {
+      min-height: 20rem;
     }
   }
 }
@@ -293,7 +337,7 @@ a {
   font-weight: 300;
 
   &:hover {
-    transform: scale(1.05);
+    transform: scale(1.02);
     background-color: $light;
   }
 }

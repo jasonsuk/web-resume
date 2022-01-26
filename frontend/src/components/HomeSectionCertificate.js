@@ -12,6 +12,7 @@ const HomeSectionCertificate = ({ certificates }) => {
   const navItemStyle = {
     fontWeight: 500,
     textAlign: 'start',
+    marginTop: '0.2rem',
     marginBottom: '0.2rem',
     borderRadius: '10px',
   };
