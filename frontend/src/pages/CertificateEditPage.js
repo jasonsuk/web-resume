@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useParams, useNavigate } from 'react-router-dom';
 import FormContainer from '../components/FormContainer.js';
 import { Form, Button } from 'react-bootstrap';
-// import DatePicker from 'react-datepicker';
+import DatePicker from 'react-date-picker';
 import Loader from '../components/Loader.js';
 import Message from '../components/Message.js';
 
@@ -29,7 +29,7 @@ const CertificateEditPage = () => {
   const [name, setName] = useState('');
   const [organization, setOrganization] = useState('');
   const [summary, setSummary] = useState('');
-  const [completedAt, setCompletedAt] = useState(Date.now());
+  const [completedAt, setCompletedAt] = useState(new Date());
   const [isKeyCertificate, setIsKeyCertificate] = useState(false);
 
   useEffect(() => {
@@ -62,6 +62,8 @@ const CertificateEditPage = () => {
       })
     );
   };
+
+  console.log(completedAt);
 
   return (
     <>
@@ -99,7 +101,15 @@ const CertificateEditPage = () => {
             </Form.Group>
             <Form.Group controlId='createdAt' className='mb-4'>
               <Form.Label>Completed at</Form.Label>
-              <Form.Text className='ms-2'>{completedAt}</Form.Text>
+              <DatePicker
+                className='datepicker'
+                value={
+                  typeof completedAt === 'string'
+                    ? new Date(completedAt)
+                    : completedAt
+                }
+                onChange={(date) => setCompletedAt(date.toISOString())}
+              />
             </Form.Group>
             <Form.Group controlId='isKeyCertificate' className='mb-4'>
               <Form.Label>Is key certificate?</Form.Label>
