@@ -12,7 +12,7 @@ const HomeSectionSkill = ({ skills }) => {
   return (
     <>
       <section className='home-section home-section-skill'>
-        <Container className='home-section-contents'>
+        <Container className='home-section-container'>
           <h3>Skills</h3>
           <h2 style={{ marginTop: '-1.6rem' }}>HOW I DO</h2>
           <Row className='mt-5'>

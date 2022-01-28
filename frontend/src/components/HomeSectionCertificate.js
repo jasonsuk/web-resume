@@ -31,7 +31,7 @@ const HomeSectionCertificate = ({ certificates }) => {
   return (
     <>
       <section className='home-section home-section-certificate'>
-        <Container className='home-section-contents'>
+        <Container className='home-section-container'>
           <h3>Certificates</h3>
           <h2 style={{ marginTop: '-1.6rem' }}>WHAT I LEARN</h2>
           <Tab.Container

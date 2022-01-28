@@ -7,7 +7,32 @@ const HomeSectionIntro = ({ statistics }) => {
   return (
     <>
       <section className='home-section home-section-intro'>
-        <Container className='home-section-contents'>
+        <Container className='home-section-container'>
+          <Row className='home-intro-contents'>
+            <Col md={6} className='home-intro-heading'>
+              <h3>Hi, I am Junghoon!</h3>
+            </Col>
+            <Col md={6} className='home-intro-image'>
+              <Image src='images/me.jpg' />
+            </Col>
+          </Row>
+          <Row className='home-intro-textbox'>
+            <p>
+              I work in the tourism industry with specialization in retail,
+              commercial analysis and project management.
+            </p>
+            <p>
+              At the same time, I strive to grow my expertise in data science
+              and programming because these help me solve business decision
+              marking problems. Additionally, I taught myself software
+              engineering skills from front to back, and it is how to manage to
+              build this website!
+            </p>
+          </Row>
+        </Container>
+      </section>
+      <section className='home-section home-section-about'>
+        <Container className='home-section-container'>
           <h3>About</h3>
           <h2 style={{ marginTop: '-1.6rem' }}>WHY I DO</h2>
           <h4 className='mt-5'>
@@ -19,33 +44,6 @@ const HomeSectionIntro = ({ statistics }) => {
             </span>
           </h4>
           <Statistics statistics={statistics} />
-        </Container>
-      </section>
-
-      <section className='home-section home-section-background'>
-        <Container className='home-section-contents'>
-          <h3>Background</h3>
-          <h2 style={{ marginTop: '-1.6rem' }}>WHO I AM</h2>
-          <Row className='mt-5'>
-            <Col md={6}>
-              <Image src='images/me.jpg' className='home-background-image' />
-            </Col>
-            <Col md={6} className='home-background-textbox'>
-              <p>
-                Hi, I am Junghoon! I've developed my career in tourism with
-                specialization in retail, commercial analysis and project
-                management.
-              </p>
-              <p>
-                I strive to grow my expertise in programming and data science
-                because these help me solve business decision marking problems.
-              </p>
-              <p>
-                In addition, I taught myself software engineering skills from
-                front to back, and it is how to manage to build this website!
-              </p>
-            </Col>
-          </Row>
         </Container>
       </section>
     </>

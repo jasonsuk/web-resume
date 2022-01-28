@@ -6,7 +6,7 @@ const HomeSectionPortfolio = ({ portfolios }) => {
   return (
     <>
       <section className='home-section home-section-portfolio'>
-        <Container className='home-section-contents'>
+        <Container className='home-section-container'>
           <h3>Portfolios</h3>
           <h2 style={{ marginTop: '-1.6rem' }}>WHAT I DO</h2>
           <Row className='mt-5'>
