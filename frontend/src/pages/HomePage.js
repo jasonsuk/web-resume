@@ -1,96 +1,75 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Container, Row, Col } from 'react-bootstrap';
+import { Container } from 'react-bootstrap';
 
-import HomeSectionContact from '../components/HomeSectionContact.js';
+import ContactSideBar from '../components/ContactSideBar.js';
 import HomeSectionIntro from '../components/HomeSectionIntro.js';
-import HomeSectionPortfolio from '../components/HomeSectionPortfolio.js';
 import HomeSectionSkill from '../components/HomeSectionSkill.js';
-import HomeSectionCertificate from '../components/HomeSectionCertificate.js';
+import HomeSectionShowcase from '../components/HomeSectionShowcase.js';
 import Loader from '../components/Loader.js';
 import Message from '../components/Message.js';
 
 import { listPortfolios } from '../redux/actions/portfolioActions.js';
 import { listSkills } from '../redux/actions/skillActions.js';
 import { listCertificates } from '../redux/actions/certificateActions.js';
+import { listBlogs } from '../redux/actions/blogActions.js';
 
 const HomePage = () => {
   const dispatch = useDispatch();
 
   const portfolioList = useSelector((state) => state.portfolioList);
-  const {
-    loading: loadingPortfolio,
-    error: errorPortfolio,
-    portfolios,
-  } = portfolioList;
+  const { portfolios } = portfolioList;
 
   const skillList = useSelector((state) => state.skillList);
   const { loading: loadingSkill, error: errorSkill, skills } = skillList;
 
   const certificateList = useSelector((state) => state.certificateList);
-  const {
-    loading: loadingCertificate,
-    error: errorCertificate,
-    certificates,
-  } = certificateList;
+  const { certificates } = certificateList;
+
+  const blogList = useSelector((state) => state.blogList);
+  const { blogs } = blogList;
 
   const statistics = {
-    countPortfolios: portfolios.length,
     countSkills: skills.length,
+    countPortfolios: portfolios.length,
+    countBlogs: blogs.length,
     countCertificates: certificates.length,
   };
+
+  console.log(blogs);
 
   useEffect(() => {
     dispatch(listPortfolios());
     dispatch(listSkills());
     dispatch(listCertificates());
+    dispatch(listBlogs());
   }, [dispatch]);
   return (
-    <Container fluid>
-      <Row>
-        <Col xs={12} md={1} className='pt-5'>
-          <HomeSectionContact />
-        </Col>
-        <Col xs={12} md={11}>
-          {/* ========================
+    <>
+      <ContactSideBar />
+      <Container fluid>
+        {/* ========================
           INTRO/BACKGROUND SECTION
           ============================ */}
-          <HomeSectionIntro statistics={statistics} />
+        <HomeSectionIntro statistics={statistics} />
 
-          {/* ========================
-          PORTFOLIOS SECTION
-          ============================ */}
-          {loadingPortfolio ? (
-            <Loader />
-          ) : errorPortfolio ? (
-            <Message>{errorPortfolio}</Message>
-          ) : (
-            <HomeSectionPortfolio portfolios={portfolios} />
-          )}
-          {/* ========================
-          CERTIFICATE SECTION
-          ============================ */}
-          {loadingCertificate ? (
-            <Loader />
-          ) : errorCertificate ? (
-            <Message>{errorCertificate}</Message>
-          ) : (
-            <HomeSectionCertificate certificates={certificates} />
-          )}
-
-          {/* ========================
+        {/* ========================
           SKILLS SECTION
           ============================ */}
-          {loadingSkill ? (
-            <Loader />
-          ) : errorSkill ? (
-            <Message>{errorSkill}</Message>
-          ) : (
-            <HomeSectionSkill skills={skills} />
-          )}
-        </Col>
-      </Row>
-    </Container>
+        {loadingSkill ? (
+          <Loader />
+        ) : errorSkill ? (
+          <Message>{errorSkill}</Message>
+        ) : (
+          <HomeSectionSkill skills={skills} />
+        )}
+
+        {/* ========================
+          PORTFOLIOS and CERTIFICATE SECTION
+          ============================ */}
+        <HomeSectionShowcase statistics={statistics} />
+      </Container>
+    </>
   );
 };
 

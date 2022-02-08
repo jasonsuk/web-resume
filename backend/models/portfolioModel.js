@@ -19,6 +19,7 @@ const portfolioSchema = mongoose.Schema(
     },
     image: {
       type: String,
+      default: '/uploads/image-sample-portfolio.jpg',
     },
     isKeyPortfolio: {
       type: Boolean,

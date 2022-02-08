@@ -44,7 +44,7 @@ const Header = () => {
             </LinkContainer>
             <LinkContainer to='/certificate'>
               <Nav.Link>
-                <i className='fas fa-school'></i> Certificate
+                <i className='fas fa-graduation-cap'></i> Certificate
               </Nav.Link>
             </LinkContainer>
             <LinkContainer to='/contact'>

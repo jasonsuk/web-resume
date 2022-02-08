@@ -33,8 +33,8 @@ export const getBlog = asyncHandler(async (req, res) => {
 export const addBlog = asyncHandler(async (req, res) => {
   const newBlog = await new Blog({
     title: 'Write a title of the blog',
-    subtitle: 'Write a subtitle of the blog',
     body: 'Write more details using rich text editor.',
+    category: 'Sample category',
   });
 
   const createdBlog = await newBlog.save();
@@ -50,11 +50,11 @@ export const updateBlog = asyncHandler(async (req, res) => {
   const blog = await Blog.findById(blogId);
 
   if (blog) {
-    const { title, subtitle, body, image, url } = req.body;
+    const { title, category, body, image, url } = req.body;
 
     blog.title = title || blog.title;
-    blog.subtitle = subtitle || blog.subtitle;
     blog.body = body || blog.body;
+    blog.category = category || blog.category;
     blog.image = image || blog.image;
     blog.url = url || blog.url;
 

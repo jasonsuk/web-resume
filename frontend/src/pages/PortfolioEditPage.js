@@ -31,6 +31,7 @@ const PortfolioEditPage = () => {
   const [summary, setSummary] = useState('');
   const [description, setDescription] = useState('');
   const [isKeyPortfolio, setIsKeyPortfolio] = useState(false);
+  const [url, setUrl] = useState('#');
   const [uploading, setUploading] = useState(false);
 
   useEffect(() => {
@@ -45,7 +46,9 @@ const PortfolioEditPage = () => {
         setName(portfolio.name);
         setSummary(portfolio.summary);
         setDescription(portfolio.description);
+        setUrl(portfolio.url);
         setIsKeyPortfolio(portfolio.isKeyPortfolio);
+        setUrl(portfolio.url);
       }
     }
   }, [dispatch, history, successUpdate, portfolio, id]);
@@ -83,6 +86,7 @@ const PortfolioEditPage = () => {
         summary,
         description,
         isKeyPortfolio,
+        url,
       })
     );
   };
@@ -140,6 +144,16 @@ const PortfolioEditPage = () => {
                 type='switch'
                 value={isKeyPortfolio}
                 onChange={(e) => setIsKeyPortfolio(e.target.checked)}
+              />
+            </Form.Group>
+            <Form.Group controlId='url' className='mb-4'>
+              <Form.Label>Portfolio url</Form.Label>
+              <Form.Control
+                type='text'
+                row={10}
+                placeholder='Write the external url for your blog.'
+                value={url}
+                onChange={(e) => setUrl(e.target.value)}
               />
             </Form.Group>
 

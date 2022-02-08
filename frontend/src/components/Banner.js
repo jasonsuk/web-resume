@@ -5,8 +5,8 @@ const Banner = ({ subject, body }) => {
   return (
     <>
       <Row className='banner-box'>
-        <h1 className='heading-style2-primary'>{subject}</h1>
-        <p className='heading-style2-text'>{body}</p>
+        <h2>{subject}</h2>
+        <p>{body}</p>
       </Row>
     </>
   );

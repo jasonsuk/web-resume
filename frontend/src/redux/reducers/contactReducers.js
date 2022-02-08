@@ -20,7 +20,7 @@ export const contactMakeReducer = (state = {}, action) => {
     case CONTACT_MAKE_REQUEST:
       return { loading: true, ...state };
     case CONTACT_MAKE_SUCCESS:
-      return { loading: false, success: true, contact: action.payload };
+      return { loading: false, success: true };
     case CONTACT_MAKE_FAIL:
       return { loading: false, error: action.payload };
     case CONTACT_MAKE_RESET:

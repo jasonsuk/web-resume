@@ -1,10 +1,14 @@
 import React from 'react';
 
-const HomeSectionContact = () => {
+const ContactSideBar = () => {
+  const contactIconTextStyle = {
+    fontSize: '0.8rem',
+  };
+
   return (
     <>
-      <section className='home-section-contact'>
-        <div className='home-contact-link'>
+      <section className='sidebar-contact'>
+        <div>
           <a
             href='https://github.com/jasonsuk'
             target='_blank'
@@ -15,9 +19,9 @@ const HomeSectionContact = () => {
               style={{ color: '#000' }}
             ></i>
           </a>
-          <h5>Github</h5>
+          <p style={contactIconTextStyle}>Github</p>
         </div>
-        <div className='home-contact-link'>
+        <div>
           <a
             href='https://www.linkedin.com/in/junghoonsuk/'
             target='_blank'
@@ -25,17 +29,17 @@ const HomeSectionContact = () => {
           >
             <i className='fab fa-linkedin fa-2x' style={{ color: '#000' }}></i>
           </a>
-          <h5>Linkedin</h5>
+          <p style={contactIconTextStyle}>Linkedin</p>
         </div>
-        <div className='home-contact-link'>
+        <div>
           <a href='/contact' rel='noreferrer'>
             <i className='far fa-envelope fa-2x' style={{ color: '#000' }}></i>
           </a>
-          <h5>Email</h5>
+          <p style={contactIconTextStyle}>Email</p>
         </div>
       </section>
     </>
   );
 };
 
-export default HomeSectionContact;
+export default ContactSideBar;

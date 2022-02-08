@@ -23,7 +23,7 @@ const BlogEditPage = () => {
   const { success: successUpdate } = blogUpdate;
 
   const [title, setTitle] = useState('');
-  const [subtitle, setSubtitle] = useState('');
+  const [category, setCategory] = useState('');
   const [body, setBody] = useState('');
   const [image, setImage] = useState('');
   const [url, setUrl] = useState('');
@@ -38,8 +38,8 @@ const BlogEditPage = () => {
         dispatch(listBlogDetail(id));
       } else {
         setTitle(blog.title);
-        setSubtitle(blog.subtitle);
         setBody(blog.body);
+        setCategory(blog.category);
         setImage(blog.image);
         setUrl(blog.url);
       }
@@ -77,8 +77,8 @@ const BlogEditPage = () => {
       updateBlog({
         _id: id,
         title,
-        subtitle,
         body,
+        category,
         image,
         url,
       })
@@ -103,15 +103,6 @@ const BlogEditPage = () => {
                 onChange={(e) => setTitle(e.target.value)}
               />
             </Form.Group>
-            <Form.Group controlId='subtitle' className='mb-4'>
-              <Form.Label>Blog subtitle</Form.Label>
-              <Form.Control
-                type='text'
-                placeholder='What do you summarize your blog?'
-                value={subtitle}
-                onChange={(e) => setSubtitle(e.target.value)}
-              />
-            </Form.Group>
             <Form.Group controlId='body' className='mb-4'>
               <Form.Label>Blog body</Form.Label>
               <Form.Control
@@ -120,6 +111,15 @@ const BlogEditPage = () => {
                 placeholder='Write the details about your blog.'
                 value={body}
                 onChange={(e) => setBody(e.target.value)}
+              />
+            </Form.Group>
+            <Form.Group controlId='category' className='mb-4'>
+              <Form.Label>Blog category</Form.Label>
+              <Form.Control
+                type='text'
+                placeholder='Describe the releated topic for your blog.'
+                value={category}
+                onChange={(e) => setCategory(e.target.value)}
               />
             </Form.Group>
             <Form.Group controlId='image' className='mb-4'>

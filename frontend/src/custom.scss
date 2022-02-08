@@ -1,10 +1,10 @@
 // Overwirte default variables
-$primary: #6d3e5d; //cosmic
-$secondary: #e7717d; // contessa
+$primary: #034ea2;
+$secondary: #ffdf00;
 $dark: #29282b;
 $light: #f2f2f2;
 $success: #afd275;
-$info: #a8d0e6;
+$info: #6d3e5d;
 $warning: #e4b123;
 $danger: #f17a89;
 $white: #fff;
@@ -14,14 +14,14 @@ $white: #fff;
 @import '../node_modules/bootstrap/scss/variables';
 @import url('https://fonts.googleapis.com/css2?family=Dongle:wght@300;400;700&display=swap');
 
-$custom-font-size-default: 1.6rem;
-$custom-font-size-xxl: 6rem;
-$custom-font-size-xl: 4.8rem;
+$custom-font-size-default: 1.2rem;
+$custom-font-size-xxl: 4.8rem;
+$custom-font-size-xl: 3.6rem;
 $custom-font-size-lg: 3.6rem;
 $custom-font-size-mdl: 2.4rem;
-$custom-font-size-mds: 1.8rem;
-$custom-font-size-sm: 1.2rem;
-$custom-font-size-xs: 1rem;
+$custom-font-size-mds: 1.6rem;
+$custom-font-size-sm: 1rem;
+$custom-font-size-xs: 0.8rem;
 
 $default-box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
 
@@ -42,8 +42,8 @@ $default-box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
 }
 
 body {
-  font-family: 'Dongle', sans-serif;
-  font-size: $custom-font-size-default;
+  font-family: 'Source Serif 4', sans-serif;
+  font-size: $custom-font-size-sm;
 }
 
 main {
@@ -57,29 +57,35 @@ footer {
 }
 
 h1 {
-  font-size: $custom-font-size-xl;
-  font-weight: 700;
+  font-size: $custom-font-size-lg;
+  font-weight: 900;
 }
 h2 {
-  font-size: $custom-font-size-lg;
-  font-weight: 700;
+  font-size: $custom-font-size-mdl;
+  font-weight: 800;
 }
 h3 {
-  font-size: $custom-font-size-mdl;
-  font-weight: 500;
+  font-size: $custom-font-size-mds;
+  font-weight: 700;
 }
 h4 {
-  font-size: $custom-font-size-mds;
-  font-weight: 500;
+  font-size: $custom-font-size-default;
+  font-weight: 600;
 }
 
 h5 {
   font-size: $custom-font-size-default;
-  font-weight: 500;
+  font-weight: 400;
+  font-style: italic;
 }
 
 p {
   font-size: $custom-font-size-default;
+  font-weight: 300;
+}
+
+small {
+  font-size: $custom-font-size-xs;
   font-weight: 300;
 }
 
@@ -97,11 +103,11 @@ a {
 }
 
 .nav-custom {
-  font-size: $custom-font-size-default;
-  padding: 0 3.6rem 0;
+  font-size: $custom-font-size-sm;
+  padding: 0.8rem 6rem;
 
   &-brand {
-    font-size: $custom-font-size-lg;
+    font-size: $custom-font-size-mds;
   }
 }
 
@@ -124,7 +130,7 @@ a {
 }
 
 .dropdown-item {
-  font-size: $custom-font-size-sm;
+  font-size: $custom-font-size-xs;
 }
 
 .btn-icon {
@@ -144,19 +150,29 @@ a {
   border: 1px ridge;
 }
 
-// ====================
-// HOMEPAGE: SECTIONS
-// ====================
+.sidebar-section-left {
+  padding: 0 auto;
+  margin-top: 2.4rem;
+}
 
-.home-section-contact {
-  display: grid;
-  justify-content: center;
+.sidebar-section-right {
+  margin: 0;
+  padding: 0;
+}
+
+.sidebar-contact {
+  height: 100vh;
+  margin-top: 2.4rem;
+  left: 1.2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
   align-items: center;
   text-align: center;
   position: fixed;
-  left: 3.6rem;
 
   & > * {
+    margin-top: 0.8rem;
     transition-duration: 3s;
     transition: 1.5s;
 
@@ -165,36 +181,91 @@ a {
     }
   }
 
-  @media screen and (max-width: 768px) {
+  @media screen and (max-width: 1024px) {
     display: none;
   }
 }
 
+.icons-contact {
+  margin: 4.8rem auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+
+  & > * {
+    margin: auto 0.8rem;
+  }
+}
+
+// ====================
+// HOMEPAGE: SECTIONS
+// ====================
+
 .home-section {
-  padding: 4.8rem 1.2rem;
+  padding: 4.8rem 3.6rem;
 
   &-intro {
-    margin-top: 4.8rem;
+    padding: 0rem;
     min-height: 85vh;
     background: $white;
+    background: $white;
+
+    @media screen and (min-width: 768px) {
+      width: 100%;
+      min-height: 45vh;
+      background: $info; /* For browsers that don't support gradients */
+      background: -webkit-linear-gradient(
+        120deg,
+        $white,
+        $white 50%,
+        $light 50%,
+        $light
+      );
+      background: -o-linear-gradient(
+        120deg,
+        $white,
+        $white 50%,
+        $light 50%,
+        $light
+      );
+      background: -moz-linear-gradient(
+        120deg,
+        $white,
+        $white 50%,
+        $light 50%,
+        $light
+      );
+      background: linear-gradient(
+        120deg,
+        $white,
+        $white 50%,
+        $light 50%,
+        $light
+      );
+    }
   }
+
   &-about {
+    background: $light;
+    color: $dark;
+  }
+  &-skill {
     background: $dark;
     color: $light;
   }
-  background: $light;
-  &-portfolio {
-    background: $warning;
+  &-showcase {
+    background: $secondary;
   }
-  &-certificate {
-    background: $success;
-  }
-  &-skill {
-    background: $light;
-  }
+  // &-portfolio {
+  //   background: $warning;
+  // }
+  // &-certificate {
+  //   background: $success;
+  // }
 
   @media screen and (min-width: 768px) {
-    padding: 4.8rem 6rem;
+    // padding: 4.8rem 6rem;
     margin-right: 0;
   }
 }
@@ -207,7 +278,6 @@ a {
   & > h4 {
     text-align: center;
     margin: 0 auto;
-    width: 85%;
   }
 }
 
@@ -217,56 +287,40 @@ a {
 
 // All pages
 .banner-box {
-  min-height: 18rem;
-  padding-top: 5rem;
-  padding-bottom: 5rem;
+  min-height: 15rem;
+  padding-top: 3rem;
+  padding-bottom: 3rem;
 
   @media screen and (min-width: 768px) {
-    min-height: 20vh;
+    min-height: 15vh;
   }
 }
 
 // HomePage
 
 .home-intro-heading {
-  & > h3 {
-    font-size: 10rem;
-    text-align: start;
-
-    @media screen and (max-width: 768px) {
-      margin-top: -1.6rem;
-      font-size: 8rem;
-      text-align: center;
-    }
-  }
+  padding: 4.8rem 1.6rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
 }
 
 .home-intro-image {
-  text-align: center;
+  display: none;
+
+  @media screen and (min-width: 768px) {
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+  }
+
   & > img {
-    width: 80%;
-    border-radius: 50%;
-    padding: 1.6rem;
-    border: 1px solid $dark;
-    background-color: $light;
+    @media screen and (min-width: 768px) {
+      height: 100%;
+      align-items: flex-end;
+      object-fit: cover;
+    }
   }
-}
-
-.home-intro-textbox {
-  margin-top: 4.8rem;
-  padding: 1.6rem;
-
-  & > p {
-    font-size: $custom-font-size-mds;
-  }
-
-  // @media screen and (min-width: 768px) {
-  //   max-width: 30rem;
-  // }
-  // @media screen and (min-width: 1024px) {
-  //   margin-left: -2.4rem;
-  //   width: 50rem;
-  // }
 }
 
 // PortfolioPage
@@ -289,25 +343,6 @@ a {
     }
   }
 
-  &:hover {
-    transform: translateY(-5px);
-  }
-
-  &-img {
-    @media screen and (min-width: 768px) {
-      min-height: 10rem;
-    }
-    @media screen and (min-width: 1024px) {
-      min-height: 14rem;
-    }
-    @media screen and (min-width: 1440px) {
-      min-height: 18rem;
-    }
-    @media screen and (min-width: 2560px) {
-      min-height: 22rem;
-    }
-  }
-
   &-body {
     @media screen and (min-width: 768px) {
       min-height: 20rem;
@@ -322,6 +357,56 @@ a {
       min-height: 12rem;
     }
   }
+}
+
+.card-img-container {
+  position: relative;
+}
+
+.card-img-portfolio {
+  display: block;
+
+  @media screen and (min-width: 768px) {
+    height: 10rem;
+  }
+  @media screen and (min-width: 1024px) {
+    height: 14rem;
+  }
+  @media screen and (min-width: 1440px) {
+    height: 18rem;
+  }
+  @media screen and (min-width: 2560px) {
+    height: 22rem;
+  }
+}
+
+.card-img-container:hover .card-img-overlay {
+  opacity: 1;
+}
+
+.card-img-overlay {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  width: 100%;
+  opacity: 0;
+  transition: 0.5s ease;
+  background-color: $primary;
+}
+
+.card-img-text {
+  color: $white;
+  font-size: $custom-font-size-default;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  text-align: center;
 }
 
 // BlogPage
@@ -360,18 +445,6 @@ a {
   }
 }
 
-.list-group-item {
-  border-radius: 10px;
-  transition-duration: 2s;
-  transition: 0.5s;
-  font-weight: 300;
-
-  &:hover {
-    transform: scale(1.02);
-    background-color: $light;
-  }
-}
-
 // ====================
 // ELEMENTS
 // ==================
@@ -395,62 +468,96 @@ a {
   }
 }
 
+.list-group-item {
+  border-radius: 10px;
+  transition-duration: 2s;
+  transition: 0.5s;
+  font-size: $custom-font-size-sm;
+  font-weight: 300;
+
+  &:hover {
+    transform: scale(1.02);
+  }
+}
+
 // ACCORDION
 .accordion-button {
   font-size: $custom-font-size-default;
 }
 
-.accordion-body {
+.accordion-header > .accordion-button {
   font-size: $custom-font-size-default;
+  font-weight: 500;
+}
+
+.accordion-body {
+  font-size: $custom-font-size-sm;
   font-weight: 300;
 }
 
 // BADGE
 .badge-custom {
+  // visibility: hidden;
   position: absolute;
-  right: 5rem;
-  min-width: 4.5rem;
+  right: 0.5rem;
+  top: 25%;
+  min-width: 6rem;
   font-size: $custom-font-size-xs;
+
+  // @media screen and (min-width: 768px) {
+  //   visibility: visible;
+  // }
 }
 
 // BUTTONS
 .btn {
+  font-family: 'Source Serif 4', sans-serif;
   font-size: $custom-font-size-sm;
-  box-shadow: $default-box-shadow;
-  transition-duration: 2s;
-  transition: 1.5s;
-  border: none;
+  transition-duration: 1s;
+  transition: 0.5s;
 
   &:hover,
   &:active {
-    opacity: 0.8;
-    background-color: #888;
+    opacity: 0.7;
   }
 }
 
 // CALENDAR
 .react-date-picker {
-  font-family: 'Dongle', sans-serif;
+  font-family: 'Source Serif 4', sans-serif;
   font-weight: 300;
   font-size: $custom-font-size-sm;
   text-align: center;
   margin-left: 3.6rem;
 }
 
+// CUSTOM TEXT BLINKER
+.text-blinker {
+  text-align: center;
+  animation: blinker 2s linear;
+  animation-iteration-count: 5;
+
+  @keyframes blinker {
+    50% {
+      opacity: 0;
+    }
+  }
+}
+
 // FLEX CUSTOM
 
 .container {
   @media screen and (min-width: 768px) {
-    max-width: 85vw;
+    max-width: 90vw;
   }
   @media screen and (min-width: 1024px) {
-    max-width: 75vw;
+    max-width: 80vw;
   }
   @media screen and (min-width: 1440px) {
-    max-width: 65vw;
+    max-width: 60vw;
   }
   @media screen and (min-width: 2560px) {
-    max-width: 55vw;
+    max-width: 50vw;
   }
 }
 

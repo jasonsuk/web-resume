@@ -37,7 +37,7 @@ export const addPortfolio = asyncHandler(async (req, res) => {
     name: 'Portfolio - new',
     summary: 'Summary for a new portfolio',
     description: 'Description for a new portfolio',
-    image: '',
+    image: '/uploads/image-sample-portfolio.jpg',
     completedAt: Date.now(),
     isKeyPortfolio: false,
     url: 'https://github.com/jasonsuk', // github main page as a default

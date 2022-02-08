@@ -36,16 +36,19 @@ const PortfolioListPage = () => {
   } = contactDelete;
 
   useEffect(() => {
-    if (successArchive) {
-      dispatch({ type: CONTACT_ARCHIVE_RESET });
-    } else {
-      dispatch(listContacts());
+    if (successDelete) {
+      history('/admin/contact');
     }
-  }, [dispatch, history, successArchive, successDelete]);
+    dispatch(listContacts());
+  }, [dispatch, history, successDelete]);
 
   const archiveContactHandler = (contactId) => {
     if (window.confirm(`Archiving a contact ${contactId}. Are you sure?`)) {
       dispatch(archiveContact(contactId));
+
+      if (successArchive) {
+        dispatch({ type: CONTACT_ARCHIVE_RESET });
+      }
     }
   };
 
@@ -129,7 +132,7 @@ const PortfolioListPage = () => {
                     size='md'
                     onClick={() => deleteContactHandler(contact._id)}
                   >
-                    <i className='far fa-folder-open'></i>
+                    <i className='far fa-trash-alt'></i>
                   </Button>
                 </td>
               </tr>

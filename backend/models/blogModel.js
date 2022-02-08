@@ -10,15 +10,18 @@ const blogSchema = mongoose.Schema(
       trim: true,
       required: [true, 'Blog title is required.'],
     },
-    subtitle: {
-      type: String,
-      trim: true,
-      required: [true, 'Write a short summary of the blog.'],
-    },
     body: {
-      // To incorporate Draft.js rich text editor
       type: String,
       trim: true,
+      required: [true, 'Write a short description of the blog.'],
+    },
+    category: {
+      type: String,
+      lowercase: true,
+      required: [
+        true,
+        'Freely write in noun Which category this blog falls into.',
+      ],
     },
     image: {
       type: String,

@@ -29,11 +29,11 @@ const BlogPage = () => {
           <Container>
             <Banner
               subject='Blog'
-              body='Collecting daily commits to business topics, programming and analysis.'
+              body='Collecting daily commits to business topics, programming and analysis. Link to Medium page.'
             />
             <Row>
               {blogs.map((blog) => (
-                <Col md={4} lg={3} key={blog._id}>
+                <Col sm={12} key={blog._id}>
                   <BlogCard blog={blog} />
                 </Col>
               ))}

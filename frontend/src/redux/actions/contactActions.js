@@ -20,8 +20,6 @@ export const makeContact = (contact) => async (dispatch) => {
 
     const { data } = await axios.post('/api/contacts/', contact);
 
-    console.log(data);
-
     dispatch({ type: CONTACT_MAKE_SUCCESS, payload: data });
   } catch (error) {
     dispatch({

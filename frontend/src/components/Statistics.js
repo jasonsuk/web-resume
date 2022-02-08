@@ -11,20 +11,25 @@ const Statistics = ({ statistics }) => {
   return (
     <>
       <Row style={customRowStyle}>
-        <Col md={4}>
-          <i className='fas fa-briefcase fa-3x  mb-5'></i>
+        <Col sm={3}>
+          <i className='fas fa-briefcase fa-3x  mb-4'></i>
           <h2>{statistics.countPortfolios}</h2>
-          <p style={{ marginTop: '-1.8rem' }}>portfolios</p>
+          <p>portfolios</p>
         </Col>
-        <Col md={4}>
-          <i className='fas fa-tools fa-3x  mb-5'></i>
+        <Col sm={3}>
+          <i className='fas fa-feather fa-3x  mb-4'></i>
+          <h2>{statistics.countBlogs}</h2>
+          <p>blogs</p>
+        </Col>
+        <Col sm={3}>
+          <i className='fas fa-tools fa-3x  mb-4 '></i>
           <h2>{statistics.countSkills}</h2>
-          <p style={{ marginTop: '-1.8rem' }}>skills</p>
+          <p>skills</p>
         </Col>
-        <Col md={4}>
-          <i className='fas fa-graduation-cap fa-3x mb-5'></i>
+        <Col sm={3}>
+          <i className='fas fa-graduation-cap fa-3x mb-4'></i>
           <h2>{statistics.countCertificates}</h2>
-          <p style={{ marginTop: '-1.8rem' }}>certificates</p>
+          <p>certificates</p>
         </Col>
       </Row>
     </>

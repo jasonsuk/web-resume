@@ -28,10 +28,13 @@ const PortfolioPage = () => {
         <section>
           <Container>
             <Banner
-              subject=' Portfolio'
-              body='Showcasing my data analytics and machine learning works'
+              subject='Portfolio'
+              body='Showcasing my data analytics and machine learning works.'
             />
             <Row>
+              <h4 className='text-blinker'>
+                Click the image to see more details
+              </h4>
               {portfolios.map((portfolio) => (
                 <Col md={6} lg={4} className='mb-4' key={portfolio._id}>
                   <PortfolioCard portfolio={portfolio} />

@@ -81,8 +81,8 @@ const BlogListPage = () => {
           <tr>
             <th>Id</th>
             <th>Title</th>
-            <th>Subtitle</th>
             <th>Body</th>
+            <th>Category</th>
             <th>Last update</th>
             <th>Edit</th>
             <th>Delete</th>
@@ -93,12 +93,12 @@ const BlogListPage = () => {
             <tr key={blog._id}>
               <td>{blog._id}</td>
               <td>{blog.title}</td>
-              <td>{blog.subtitle}</td>
               <td>
                 {blog.body.length > 50
                   ? blog.body.substring(0, 50) + '...'
                   : blog.body}
               </td>
+              <td>{blog.category}</td>
               <td>{blog.updatedAt.substring(0, 10)}</td>
               <td>
                 <LinkContainer to={`/admin/blog/${blog._id}/edit`}>
