@@ -63,8 +63,6 @@ const CertificateEditPage = () => {
     );
   };
 
-  console.log(completedAt);
-
   return (
     <>
       {loading ? (

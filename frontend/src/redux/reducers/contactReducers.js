@@ -13,6 +13,7 @@ import {
   CONTACT_DELETE_REQUEST,
   CONTACT_DELETE_SUCCESS,
   CONTACT_DELETE_FAIL,
+  CONTACT_DELETE_RESET,
 } from '../constants/contactConstants.js';
 
 export const contactMakeReducer = (state = {}, action) => {
@@ -66,6 +67,8 @@ export const contactDeleteReducer = (state = {}, action) => {
       return { loading: false, success: true };
     case CONTACT_DELETE_FAIL:
       return { loading: false, error: action.payload };
+    case CONTACT_DELETE_RESET:
+      return {};
     default:
       return state;
   }

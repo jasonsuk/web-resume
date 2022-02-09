@@ -16,6 +16,7 @@ import {
   CERTIFICATE_DELETE_REQUEST,
   CERTIFICATE_DELETE_SUCCESS,
   CERTIFICATE_DELETE_FAIL,
+  CERTIFICATE_DELETE_RESET,
 } from '../constants/certificateConstants.js';
 
 export const certificateListReducer = (
@@ -85,6 +86,8 @@ export const certificateDeleteReducer = (state = {}, action) => {
       return { loading: false, success: true };
     case CERTIFICATE_DELETE_FAIL:
       return { loading: false, error: action.payload };
+    case CERTIFICATE_DELETE_RESET:
+      return {};
 
     default:
       return state;

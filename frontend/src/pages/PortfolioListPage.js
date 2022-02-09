@@ -13,28 +13,34 @@ import {
   deletePortfolio,
 } from '../redux/actions/portfolioActions';
 
-import { PORTFOLIO_CREATE_RESET } from '../redux/constants/portfolioConstants.js';
+import {
+  PORTFOLIO_CREATE_RESET,
+  PORTFOLIO_DELETE_RESET,
+} from '../redux/constants/portfolioConstants.js';
 
 const PortfolioListPage = () => {
   const dispatch = useDispatch();
   const history = useNavigate();
+
   const portfolioList = useSelector((state) => state.portfolioList);
   const { loading, error, portfolios } = portfolioList;
 
   const portfolioCreate = useSelector((state) => state.portfolioCreate);
-  const { success: createSuccess, portfolio: newPortfolio } = portfolioCreate;
+  const { success: successCreate, portfolio: newPortfolio } = portfolioCreate;
 
   const portfolioDelete = useSelector((state) => state.portfolioDelete);
-  const { success: deleteSuccess } = portfolioDelete;
+  const { success: successDelete } = portfolioDelete;
 
   useEffect(() => {
-    if (createSuccess) {
+    dispatch({ type: PORTFOLIO_CREATE_RESET });
+    dispatch({ type: PORTFOLIO_DELETE_RESET });
+
+    if (successCreate) {
       history(`/admin/portfolio/${newPortfolio._id}/edit`);
-      dispatch({ type: PORTFOLIO_CREATE_RESET });
     } else {
       dispatch(listPortfolios());
     }
-  }, [dispatch, history, newPortfolio, createSuccess, deleteSuccess]);
+  }, [dispatch, history, successCreate, successDelete, newPortfolio]);
 
   const createPortfolioHandler = () => {
     dispatch(createPortfolio());

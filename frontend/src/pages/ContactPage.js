@@ -15,6 +15,7 @@ import Loader from '../components/Loader.js';
 import Message from '../components/Message.js';
 
 import { makeContact } from '../redux/actions/contactActions.js';
+import { CONTACT_MAKE_RESET } from '../redux/constants/contactConstants.js';
 
 const ContactPage = () => {
   const [name, setName] = useState('');
@@ -29,14 +30,16 @@ const ContactPage = () => {
   const { loading, success, error } = contactMake;
 
   useEffect(() => {
+    dispatch({ type: CONTACT_MAKE_RESET });
+
     if (success) {
       setSent(true);
       setTimeout(() => {
         history('/contact');
         reset();
-      }, 200);
+      }, 2000);
     }
-  }, [success, history]);
+  }, [dispatch, history, success]);
 
   const reset = () => {
     setSent(false);
@@ -67,6 +70,13 @@ const ContactPage = () => {
           body='Find me on social media, or simply send an email to me!'
         />
         <Form onSubmit={submitHandler}>
+          {sent && (
+            <Message variant='success'>
+              {
+                'Thank you. Successfully sent your contact! Redirecting in seconds.'
+              }
+            </Message>
+          )}
           <Row>
             <Col md={6}>
               <Form.Group className='my-2' controlId='contact-name'>
@@ -106,13 +116,6 @@ const ContactPage = () => {
               Submit
             </Button>
           </ButtonGroup>
-          {sent && (
-            <Message variant='success'>
-              {
-                'Thank you. Successfully sent your contact! Redirecting in seconds.'
-              }
-            </Message>
-          )}
         </Form>
         <ContactIcons />
       </Container>

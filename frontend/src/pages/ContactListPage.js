@@ -12,7 +12,10 @@ import {
   deleteContact,
 } from '../redux/actions/contactActions.js';
 
-import { CONTACT_ARCHIVE_RESET } from '../redux/constants/contactConstants.js';
+import {
+  CONTACT_ARCHIVE_RESET,
+  CONTACT_DELETE_RESET,
+} from '../redux/constants/contactConstants.js';
 
 const PortfolioListPage = () => {
   const dispatch = useDispatch();
@@ -36,19 +39,15 @@ const PortfolioListPage = () => {
   } = contactDelete;
 
   useEffect(() => {
-    if (successDelete) {
-      history('/admin/contact');
-    }
+    dispatch({ type: CONTACT_ARCHIVE_RESET });
+    dispatch({ type: CONTACT_DELETE_RESET });
+
     dispatch(listContacts());
-  }, [dispatch, history, successDelete]);
+  }, [dispatch, history, successArchive, successDelete]);
 
   const archiveContactHandler = (contactId) => {
     if (window.confirm(`Archiving a contact ${contactId}. Are you sure?`)) {
       dispatch(archiveContact(contactId));
-
-      if (successArchive) {
-        dispatch({ type: CONTACT_ARCHIVE_RESET });
-      }
     }
   };
 

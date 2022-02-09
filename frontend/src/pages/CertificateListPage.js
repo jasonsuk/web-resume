@@ -12,11 +12,15 @@ import {
   createCertificate,
   deleteCertificate,
 } from '../redux/actions/certificateActions.js';
-import { CERTIFICATE_CREATE_RESET } from '../redux/constants/certificateConstants.js';
+import {
+  CERTIFICATE_CREATE_RESET,
+  CERTIFICATE_DELETE_RESET,
+} from '../redux/constants/certificateConstants.js';
 
 const CertificateListPage = () => {
   const dispatch = useDispatch();
   const history = useNavigate();
+
   const certificateList = useSelector((state) => state.certificateList);
   const { loading, error, certificates } = certificateList;
 
@@ -28,13 +32,15 @@ const CertificateListPage = () => {
   const { success: successDelete } = certificateDelete;
 
   useEffect(() => {
+    dispatch({ type: CERTIFICATE_CREATE_RESET });
+    dispatch({ type: CERTIFICATE_DELETE_RESET });
+
     if (successCreate) {
-      dispatch({ type: CERTIFICATE_CREATE_RESET });
       history(`/admin/certificate/${newCertificate._id}/edit`);
     } else {
       dispatch(listCertificates());
     }
-  }, [dispatch, successCreate, successDelete, history, newCertificate]);
+  }, [dispatch, history, successCreate, successDelete, newCertificate]);
 
   const createCertificateHandler = () => {
     dispatch(createCertificate());

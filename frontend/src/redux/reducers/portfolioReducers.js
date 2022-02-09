@@ -16,6 +16,7 @@ import {
   PORTFOLIO_DELETE_REQUEST,
   PORTFOLIO_DELETE_SUCCESS,
   PORTFOLIO_DELETE_FAIL,
+  PORTFOLIO_DELETE_RESET,
 } from '../constants/portfolioConstants.js';
 
 export const portfolioListReducer = (state = { portfolios: [] }, action) => {
@@ -82,7 +83,8 @@ export const portfolioDeleteReducer = (state = {}, action) => {
       return { loading: false, success: true };
     case PORTFOLIO_DELETE_FAIL:
       return { loading: false, error: action.payload };
-
+    case PORTFOLIO_DELETE_RESET:
+      return {};
     default:
       return state;
   }
