@@ -122,7 +122,8 @@ const PortfolioEditPage = () => {
             <Form.Group controlId='summary' className='mb-4'>
               <Form.Label>Portfolio summary</Form.Label>
               <Form.Control
-                type='text'
+                as='textarea'
+                rows={3}
                 placeholder='What is your portfolio about?'
                 value={summary}
                 onChange={(e) => setSummary(e.target.value)}
@@ -131,8 +132,8 @@ const PortfolioEditPage = () => {
             <Form.Group controlId='description' className='mb-4'>
               <Form.Label>Portfolio description</Form.Label>
               <Form.Control
-                type='textarea'
-                row={10}
+                as='textarea'
+                rows={8}
                 placeholder='Describe yoru portfolio more in details.'
                 value={description}
                 onChange={(e) => setDescription(e.target.value)}

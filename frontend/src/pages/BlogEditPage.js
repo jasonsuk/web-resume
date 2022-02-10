@@ -106,8 +106,8 @@ const BlogEditPage = () => {
             <Form.Group controlId='body' className='mb-4'>
               <Form.Label>Blog body</Form.Label>
               <Form.Control
-                type='textarea'
-                row={10}
+                as='textarea'
+                rows={8}
                 placeholder='Write the details about your blog.'
                 value={body}
                 onChange={(e) => setBody(e.target.value)}
