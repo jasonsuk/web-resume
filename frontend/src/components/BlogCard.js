@@ -3,8 +3,8 @@ import { Card, Row, Col } from 'react-bootstrap';
 
 const BlogCard = ({ blog }) => {
   const blogCardImageStyle = {
-    width: '300px',
-    height: '200px',
+    width: '18rem',
+    height: '12rem',
   };
 
   const blogCardCategoryTextStyle = {
@@ -25,11 +25,14 @@ const BlogCard = ({ blog }) => {
     <>
       <Card className='card-blog'>
         <Card.Body>
-          <Row>
-            <Col sm={8}>
-              <Card.Text style={blogCardCategoryTextStyle}>
-                {blog.category}
-              </Card.Text>
+          <Card.Text style={blogCardCategoryTextStyle}>
+            {blog.category}
+            <span style={{ float: 'right', marginRight: '0.2rem' }}>
+              Written on {blog.createdAt.substring(0, 10)}
+            </span>
+          </Card.Text>
+          <Row className='mt-4'>
+            <Col md={8}>
               <Card.Title as='h4' style={{ textDecoration: 'underline' }}>
                 {blog.title.length > 50
                   ? blog.title.substring(0, 50) + '...'
@@ -40,23 +43,21 @@ const BlogCard = ({ blog }) => {
                   ? blog.body.substring(0, 80) + '...'
                   : blog.body}
               </Card.Text>
-              <Card.Text style={blogCardLinkStyle}>
-                {blog.image.length > 0 && (
-                  <a
-                    href={blog.url ? blog.url : '/blog'}
-                    target='_blank'
-                    alt={blog.title}
-                    rel='noopener noreferrer'
-                  >
-                    Learn mode &rarr;{' '}
-                  </a>
-                )}
-              </Card.Text>
             </Col>
-            <Col sm={4} className='text-end'>
+            <Col md={4} className='text-end'>
               <Card.Img style={blogCardImageStyle} src={blog.image} />
             </Col>
           </Row>
+          <Card.Text style={blogCardLinkStyle}>
+            <a
+              href={blog.url ? blog.url : '/blog'}
+              target='_blank'
+              alt={blog.title}
+              rel='noopener noreferrer'
+            >
+              Learn mode &rarr;{' '}
+            </a>
+          </Card.Text>
         </Card.Body>
       </Card>
     </>

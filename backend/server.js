@@ -3,7 +3,12 @@ import path from 'path';
 import express from 'express';
 import dotenv from 'dotenv';
 import morgan from 'morgan';
-
+import mongoSanitize from 'express-mongo-sanitize';
+import helmet from 'helmet';
+import xss from 'xss-clean';
+import hpp from 'hpp';
+import cors from 'cors';
+import rateLimit from 'express-rate-limit';
 import connectDB from './config/database.js';
 import PortfolioRouter from './routers/portfolioRouter.js';
 import BlogRouter from './routers/blogRouter.js';
@@ -27,6 +32,28 @@ const app = express();
 // Middlware to read req.body in JSON
 app.use(express.json());
 
+// Middleware to prevent MongoDB operator injection
+app.use(mongoSanitize());
+
+// Set security headers
+app.use(helmet());
+
+// Prevent XSS attacks
+app.use(xss());
+
+// Prevent http param pollution
+app.use(hpp());
+
+// Enable CORS
+app.use(cors());
+
+// Rate limiting - up to 100 requests per 10 minutes
+const limiter = rateLimit({
+  windowMs: 10 * 60 * 1000, // 10 minutes
+  max: 100,
+});
+app.use(limiter);
+
 // Third-party middleware for logging on development node
 if (process.env.NODE_ENV == 'development') {
   app.use(morgan('dev'));
@@ -40,14 +67,27 @@ app.use('/api/contacts', ContactRouter);
 app.use('/api/users', UserRouter);
 app.use('/api/uploads', FileUploadRouter);
 
-// Set folders static
+// Set the root directory
 const __dirname = path.resolve();
-app.use('/uploads', express.static(path.join(__dirname, '/uploads')));
 
-// Routing
-app.get('/', (req, res) => {
-  res.send('API is running');
-});
+// Make frontend as a static folder
+if (process.env.NODE_ENV === 'production') {
+  app.use(express.static(path.join(__dirname, '/frontend/build')));
+
+  // Any routes that are not specified
+  // point to 'index.html'
+  app.get('*', (req, res) =>
+    res.sendFile(path.resolve(__dirname, 'frontend', 'index.html'))
+  );
+} else {
+  // Routing
+  app.get('/', (req, res) => {
+    res.send('API is running');
+  });
+}
+
+// Set folders static
+app.use('/uploads', express.static(path.join(__dirname, '/uploads')));
 
 // Error handler
 app.use(notFoundError);

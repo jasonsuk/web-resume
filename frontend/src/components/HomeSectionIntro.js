@@ -35,20 +35,20 @@ const AboutMeOffcanvas = ({ name }) => {
         <Offcanvas.Body>
           <ListGroup variant='flush'>
             <ListGroup.Item>
-              I orginally built my career in the tourism industry over 5+ years.
+              I orginally built my career in the tourism industry over 5 years.
             </ListGroup.Item>
             <ListGroup.Item>
-              Specalized in retail operations, project management and commercial
-              analysis.
+              Specalized in solving business problems in commercial operations
+              through analysis and project management.
             </ListGroup.Item>
             <ListGroup.Item>
               Over past years, I discovered opportunities that data science and
-              artificial intelligence can dramatically improve some out-of-date,
+              software engineering can dramatically improve some out-of-date,
               inefficient business decisions and practices.
             </ListGroup.Item>
             <ListGroup.Item>
               Therefore I wish to be a practitioner who innovates my domain
-              field through next-generation technologies.
+              field through technologies.
             </ListGroup.Item>
           </ListGroup>
         </Offcanvas.Body>
@@ -66,10 +66,10 @@ const HomeSectionIntro = ({ statistics }) => {
             <Col md={6} className='home-intro-heading ps-5'>
               <h1>Hi, I'm</h1>
               <h1 style={{ marginTop: '-0.8rem' }}>Junghoon</h1>
-              <h4>I'm a data analyst</h4>
+              <h4>I am a self-taught developer / data analyst</h4>
               <p>
-                I solve business management problems through next-generation
-                technologies like data science and machine learning
+                I solve business management problems through technologies in
+                data science and software engineering
               </p>
               <ButtonGroup className='mt-4'>
                 <Button variant='primary' style={{ minWidth: '8rem' }}>
@@ -79,7 +79,7 @@ const HomeSectionIntro = ({ statistics }) => {
                     download
                     style={{ color: 'white' }}
                   >
-                    Download my resume
+                    Download resume
                   </Link>
                 </Button>
                 <AboutMeOffcanvas placement='end' name={'About me'} />
@@ -96,8 +96,8 @@ const HomeSectionIntro = ({ statistics }) => {
           <h3>Purpose</h3>
           <h2>WHY I DO</h2>
           <p className='mt-5 text-center'>
-            I built this web resume to showcase my data science and machine
-            learning works.
+            I built this web resume to showcase my data science and programming
+            works.
             <span style={{ display: 'block' }}>
               EVERY DAY I am commited to develop my skills - no matter how big
               or small it is!
