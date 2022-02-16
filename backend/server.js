@@ -69,6 +69,8 @@ app.use('/api/uploads', FileUploadRouter);
 
 // Set the root directory
 const __dirname = path.resolve();
+// Set folders static
+app.use('/uploads', express.static(path.join(__dirname, '/uploads')));
 
 // Make frontend as a static folder
 if (process.env.NODE_ENV === 'production') {
@@ -85,9 +87,6 @@ if (process.env.NODE_ENV === 'production') {
     res.send('API is running');
   });
 }
-
-// Set folders static
-app.use('/uploads', express.static(path.join(__dirname, '/uploads')));
 
 // Error handler
 app.use(notFoundError);
