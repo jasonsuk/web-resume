@@ -12,4 +12,4 @@ The application is built using JavaScript MERN stack (MongoDB, Express, React, N
 
 ## Deployment
 
-The application is currenctly deployed on Heroku for the personal use, following the link.
+The application is currenctly deployed on Heroku for the personal use, following the link: https://webresume-devjson.herokuapp.com/
