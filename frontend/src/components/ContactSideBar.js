@@ -1,4 +1,5 @@
 import React from 'react';
+import { LinkContainer } from 'react-router-bootstrap';
 
 const ContactSideBar = () => {
   const contactIconTextStyle = {
@@ -31,10 +32,10 @@ const ContactSideBar = () => {
           </a>
           <p style={contactIconTextStyle}>Linkedin</p>
         </div>
-        <div>
-          <a href='/contact' rel='noreferrer'>
+        <div className='home-contact-link'>
+          <LinkContainer to='/contact'>
             <i className='far fa-envelope fa-2x' style={{ color: '#000' }}></i>
-          </a>
+          </LinkContainer>
           <p style={contactIconTextStyle}>Email</p>
         </div>
       </section>

@@ -2,30 +2,11 @@ import React from 'react';
 import { Card, Row, Col } from 'react-bootstrap';
 
 const BlogCard = ({ blog }) => {
-  const blogCardImageStyle = {
-    width: '18rem',
-    height: '12rem',
-  };
-
-  const blogCardCategoryTextStyle = {
-    color: '#6d3e5d',
-    fontWeight: 800,
-    textTransform: 'uppercase',
-    fontSize: '0.8rem',
-  };
-
-  const blogCardLinkStyle = {
-    position: 'absolute',
-    bottom: '0.8rem',
-    fontWeight: 800,
-    fontSize: '0.8rem',
-  };
-
   return (
     <>
       <Card className='card-blog'>
         <Card.Body>
-          <Card.Text style={blogCardCategoryTextStyle}>
+          <Card.Text className='card-blog-category'>
             {blog.category}
             <span style={{ float: 'right', marginRight: '0.2rem' }}>
               Written on {blog.createdAt.substring(0, 10)}
@@ -43,21 +24,21 @@ const BlogCard = ({ blog }) => {
                   ? blog.body.substring(0, 80) + '...'
                   : blog.body}
               </Card.Text>
+              <Card.Text className='card-blog-link'>
+                <a
+                  href={blog.url ? blog.url : '/blog'}
+                  target='_blank'
+                  alt={blog.title}
+                  rel='noopener noreferrer'
+                >
+                  &#128279; Explore more
+                </a>
+              </Card.Text>
             </Col>
             <Col md={4} className='text-end'>
-              <Card.Img style={blogCardImageStyle} src={blog.image} />
+              <Card.Img className='card-blog-img' src={blog.image} />
             </Col>
           </Row>
-          <Card.Text style={blogCardLinkStyle}>
-            <a
-              href={blog.url ? blog.url : '/blog'}
-              target='_blank'
-              alt={blog.title}
-              rel='noopener noreferrer'
-            >
-              Learn mode &rarr;{' '}
-            </a>
-          </Card.Text>
         </Card.Body>
       </Card>
     </>

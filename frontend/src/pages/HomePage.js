@@ -36,8 +36,6 @@ const HomePage = () => {
     countCertificates: certificates.length,
   };
 
-  console.log(blogs);
-
   useEffect(() => {
     dispatch(listPortfolios());
     dispatch(listSkills());

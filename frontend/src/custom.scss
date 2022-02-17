@@ -104,7 +104,11 @@ a {
 
 .nav-custom {
   font-size: $custom-font-size-sm;
-  padding: 0.8rem 6rem;
+  padding: 0.8rem;
+
+  @media screen and (min-width: 768px) {
+    padding: 0.8rem 3.6rem;
+  }
 
   &-brand {
     font-size: $custom-font-size-mds;
@@ -350,9 +354,6 @@ a {
     @media screen and (min-width: 1024px) {
       min-height: 16rem;
     }
-    // @media screen and (min-width: 1440px) {
-    //   min-height: 16rem;
-    // }
     @media screen and (min-width: 2560px) {
       min-height: 12rem;
     }
@@ -367,16 +368,16 @@ a {
   display: block;
 
   @media screen and (min-width: 768px) {
-    height: 10rem;
+    height: 12rem;
   }
   @media screen and (min-width: 1024px) {
     height: 14rem;
   }
   @media screen and (min-width: 1440px) {
-    height: 18rem;
+    height: 16rem;
   }
   @media screen and (min-width: 2560px) {
-    height: 22rem;
+    height: 20rem;
   }
 }
 
@@ -423,25 +424,29 @@ a {
   &-img {
     @media screen and (min-width: 1024px) {
       min-height: 6rem;
+      min-width: 8rem;
     }
     @media screen and (min-width: 1440px) {
-      min-height: 10rem;
+      min-height: 12rem;
+      min-width: 10rem;
     }
     @media screen and (min-width: 2560px) {
-      min-height: 14rem;
+      min-height: 18rem;
+      min-width: 12rem;
     }
   }
 
-  &-body {
-    @media screen and (min-width: 1024px) {
-      min-height: 12rem;
-    }
-    @media screen and (min-width: 1440px) {
-      min-height: 16rem;
-    }
-    @media screen and (min-width: 2560px) {
-      min-height: 20rem;
-    }
+  &-category {
+    color: $primary;
+    font-weight: 800;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+  }
+
+  &-link {
+    margin: 1.2rem auto;
+    font-weight: 800;
+    font-size: 0.8rem;
   }
 }
 

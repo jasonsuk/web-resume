@@ -23,9 +23,9 @@ const HomeSectionSkill = ({ skills }) => {
                   .map((skill) => (
                     <ListGroup.Item key={skill._id} style={listItemStyle}>
                       {skill.name}
-                      <Badge bg='primary' className='badge-custom'>
+                      {/* <Badge bg='primary' className='badge-custom'>
                         {skill.maturity}
-                      </Badge>
+                      </Badge> */}
                     </ListGroup.Item>
                   ))}
               </ListGroup>
@@ -40,9 +40,9 @@ const HomeSectionSkill = ({ skills }) => {
                   .map((skill) => (
                     <ListGroup.Item key={skill._id} style={listItemStyle}>
                       {skill.name}
-                      <Badge bg='primary' className='badge-custom'>
+                      {/* <Badge bg='primary' className='badge-custom'>
                         {skill.maturity}
-                      </Badge>
+                      </Badge> */}
                     </ListGroup.Item>
                   ))}
               </ListGroup>
