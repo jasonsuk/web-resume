@@ -3,10 +3,6 @@ import { Container, Row, Col, Card, Button } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
 
 const HomeSectionShowcase = ({ statistics }) => {
-  const cardImgStyle = {
-    minHeight: '18rem',
-  };
-
   return (
     <>
       <section className='home-section home-section-showcase'>
@@ -19,7 +15,7 @@ const HomeSectionShowcase = ({ statistics }) => {
                 <Card.Img
                   variant='top'
                   src='images/homepage-portfolio.jpg'
-                  style={cardImgStyle}
+                  className='home-showcase-img'
                 />
                 <Card.Body>
                   <Card.Title as='h4' className='text-center'>
@@ -38,7 +34,7 @@ const HomeSectionShowcase = ({ statistics }) => {
                 <Card.Img
                   variant='top'
                   src='images/homepage-blog.jpg'
-                  style={cardImgStyle}
+                  className='home-showcase-img'
                 />
                 <Card.Body>
                   <Card.Title as='h4' className='text-center'>
@@ -57,7 +53,7 @@ const HomeSectionShowcase = ({ statistics }) => {
                 <Card.Img
                   variant='top'
                   src='images/homepage-certificate.jpg'
-                  style={cardImgStyle}
+                  className='home-showcase-img'
                 />
                 <Card.Body>
                   <Card.Title as='h4' className='text-center'>

@@ -1,11 +1,7 @@
 import React from 'react';
-import { Container, Row, Col, ListGroup, Badge } from 'react-bootstrap';
+import { Container, Row, Col, ListGroup } from 'react-bootstrap';
 
 const HomeSectionSkill = ({ skills }) => {
-  const listItemStyle = {
-    borderRadius: '10px',
-  };
-
   return (
     <>
       <section className='home-section home-section-skill'>
@@ -21,12 +17,18 @@ const HomeSectionSkill = ({ skills }) => {
                   .sort((a, b) => b.score - a.score)
                   .slice(0, 5)
                   .map((skill) => (
-                    <ListGroup.Item key={skill._id} style={listItemStyle}>
-                      {skill.name}
-                      {/* <Badge bg='primary' className='badge-custom'>
+                    <div
+                      key={skill._id}
+                      bg='primary'
+                      className='home-skill-textbox'
+                    >
+                      <ListGroup.Item className='home-skill-textbox-front'>
+                        {skill.name}
+                      </ListGroup.Item>
+                      <ListGroup.Item className='home-skill-textbox-back'>
                         {skill.maturity}
-                      </Badge> */}
-                    </ListGroup.Item>
+                      </ListGroup.Item>
+                    </div>
                   ))}
               </ListGroup>
             </Col>
@@ -38,12 +40,18 @@ const HomeSectionSkill = ({ skills }) => {
                   .sort((a, b) => b.score - a.score)
                   .slice(0, 5)
                   .map((skill) => (
-                    <ListGroup.Item key={skill._id} style={listItemStyle}>
-                      {skill.name}
-                      {/* <Badge bg='primary' className='badge-custom'>
+                    <div
+                      key={skill._id}
+                      bg='primary'
+                      className='home-skill-textbox'
+                    >
+                      <ListGroup.Item className='home-skill-textbox-front'>
+                        {skill.name}
+                      </ListGroup.Item>
+                      <ListGroup.Item className='home-skill-textbox-back'>
                         {skill.maturity}
-                      </Badge> */}
-                    </ListGroup.Item>
+                      </ListGroup.Item>
+                    </div>
                   ))}
               </ListGroup>
             </Col>
@@ -55,7 +63,10 @@ const HomeSectionSkill = ({ skills }) => {
                   .sort((a, b) => b.score - a.score)
                   .slice(0, 5)
                   .map((skill) => (
-                    <ListGroup.Item key={skill._id} style={listItemStyle}>
+                    <ListGroup.Item
+                      key={skill._id}
+                      className='home-skill-textbox'
+                    >
                       {skill.name}
                     </ListGroup.Item>
                   ))}
@@ -69,7 +80,10 @@ const HomeSectionSkill = ({ skills }) => {
                   .sort((a, b) => b.score - a.score)
                   .slice(0, 5)
                   .map((skill) => (
-                    <ListGroup.Item key={skill._id} style={listItemStyle}>
+                    <ListGroup.Item
+                      key={skill._id}
+                      className='home-skill-textbox'
+                    >
                       {skill.name}
                     </ListGroup.Item>
                   ))}

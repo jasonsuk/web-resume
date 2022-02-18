@@ -65,7 +65,7 @@ app.use('/api/certificates', CertificateRouter);
 app.use('/api/skills', SkillRouter);
 app.use('/api/contacts', ContactRouter);
 app.use('/api/users', UserRouter);
-app.use('/api/uploads', FileUploadRouter);
+app.use('/uploads', FileUploadRouter);
 
 // Set the root directory
 const __dirname = path.resolve();

@@ -8,7 +8,7 @@ const PortfolioCard = ({ portfolio }) => {
         {portfolio.image.length > 0 && (
           <div className='card-img-container'>
             <Card.Img
-              className='card-img-portfolio'
+              className='card-portfolio-img'
               src={portfolio.image}
               alt={portfolio.name}
             />
@@ -20,28 +20,31 @@ const PortfolioCard = ({ portfolio }) => {
             >
               <div className='card-img-overlay'>
                 <Card.Text className='card-img-text'>
-                  {portfolio.name}
+                  {portfolio.summary.split(' ').length > 20
+                    ? portfolio.summary.split(' ').slice(0, 20).join(' ') +
+                      '...'
+                    : portfolio.summary}
                 </Card.Text>
               </div>
             </a>
           </div>
         )}
-        <Card.Body>
-          <Card.Title as='h3' style={{ minHeight: '4.2rem' }}>
-            {portfolio.name.length > 50
-              ? portfolio.name.substring(0, 50) + '...'
+        <Card.Body className='card-portfolio'>
+          <Card.Title className='card-portfolio-name'>
+            {portfolio.name.split(' ').length > 10
+              ? portfolio.name.split(' ').slice(0, 10).join(' ') + '...'
               : portfolio.name}
           </Card.Title>
-          <Card.Text as='h5'>
-            {portfolio.summary.length > 80
-              ? portfolio.summary.substring(0, 80) + '...'
+          {/* <Card.Text className='card-portfolio-summary'>
+            {portfolio.summary.split(' ').length > 20
+              ? portfolio.summary.split(' ').slice(0, 20).join(' ') + '...'
               : portfolio.summary}
-          </Card.Text>
+          </Card.Text> */}
 
           <hr></hr>
-          <Card.Text style={{ fontSize: '1rem' }}>
-            {portfolio.description.length > 150
-              ? portfolio.description.substring(0, 150) + '...'
+          <Card.Text className='card-portfolio-description'>
+            {portfolio.description.split(' ').length > 60
+              ? portfolio.description.split(' ').slice(0, 60).join(' ') + '...'
               : portfolio.description}
           </Card.Text>
         </Card.Body>

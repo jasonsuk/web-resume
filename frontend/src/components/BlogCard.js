@@ -14,12 +14,12 @@ const BlogCard = ({ blog }) => {
           </Card.Text>
           <Row className='mt-4'>
             <Col md={8}>
-              <Card.Title as='h4' style={{ textDecoration: 'underline' }}>
+              <Card.Title className='card-blog-title'>
                 {blog.title.length > 50
                   ? blog.title.substring(0, 50) + '...'
                   : blog.title}
               </Card.Title>
-              <Card.Text as='p' className='mt-3'>
+              <Card.Text className='card-blog-body'>
                 {blog.body.length > 800
                   ? blog.body.substring(0, 80) + '...'
                   : blog.body}
