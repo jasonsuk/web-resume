@@ -1,3 +1,4 @@
+import path from 'path';
 import asyncHandler from 'express-async-handler';
 import Blog from '../models/blogModel.js';
 
@@ -6,7 +7,7 @@ import Blog from '../models/blogModel.js';
 // ACCESS: Public
 
 export const getBlogs = asyncHandler(async (req, res) => {
-  const blogs = await Blog.find({}).sort({ updatedAt: -1 });
+  const blogs = await Blog.find({}).sort({ createdAt: -1 });
   res.status(200).json(blogs);
 });
 
@@ -31,11 +32,25 @@ export const getBlog = asyncHandler(async (req, res) => {
 // ACCESS: Private
 
 export const addBlog = asyncHandler(async (req, res) => {
+  const imageFiles = [
+    'image-1642777567091.jpg',
+    'image-1642777813145.jpg',
+    'image-1642777858127.jpg',
+    'image-1642777873423.jpg',
+    'image-1643224307410.jpg',
+  ];
+
+  const randIdx = Math.floor(Math.random() * imageFiles.length);
+  const randImage = path.join('uploads', imageFiles[randIdx]);
+
   const newBlog = await new Blog({
     title: 'Write a title of the blog',
     body: 'Write more details using rich text editor.',
     category: 'Sample category',
+    image: randImage,
   });
+
+  console.log(randImage);
 
   const createdBlog = await newBlog.save();
   res.status(200).json(createdBlog);
